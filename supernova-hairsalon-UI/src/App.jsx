@@ -1,19 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Login from './components/Login/Login';
-import Dashboard from './pages/Dashboard/Dashboard';
-import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
+import AuthComponent from './components/AuthComponent/AuthComponent.jsx'; // Gebruik AuthComponent voor login en logout
+import Dashboard from './pages/Dashboard/Dashboard.jsx';
 
 const App = () => {
     return (
         <Router>
             <Routes>
-                <Route path="/" element={<Login />} />
-                <Route path="/dashboard" element={
-                    <ProtectedRoute>
-                        <Dashboard />
-                    </ProtectedRoute>
-                } />
+                <Route path="/" element={<AuthComponent />} /> {/* AuthComponent beheert login en logout */}
+                <Route path="/dashboard" element={<Dashboard />} />
             </Routes>
         </Router>
     );

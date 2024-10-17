@@ -1,0 +1,247 @@
+/******************************************
+ * GLOBAL.CSS
+ * Author: Michael Farrah Girgis
+ * Last Updated: [Datum]
+ *
+ * TABLE OF CONTENTS:
+ * 1. Global Settings (Root & Typography)
+ * 2. Links
+ * 3. Layout & Body
+ * 4. Buttons
+ * 5. Forms (Inputs & Errors)
+ * 6. Dashboard
+ * 7. Layout (Header, Content, Footer)
+ ******************************************/
+
+/* 1. GLOBAL SETTINGS (ROOT & TYPOGRAPHY)
+----------------------------------------- */
+:root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    color-scheme: light dark;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #242424;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* 2. LINKS
+----------------------------------------- */
+a {
+    font-weight: 500;
+    color: #646cff;
+    text-decoration: inherit;
+}
+a:hover {
+    color: #535bf2;
+}
+
+/* 3. LAYOUT & BODY
+----------------------------------------- */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Main content moet zich aanpassen zodat de footer altijd onderaan blijft */
+.content {
+    flex-grow: 1;
+    margin-left: 10px; /* 10px marge naar links */
+    height: 400px;
+    padding: 24px;
+    background-color: #919191;
+    color: #333;
+}
+
+/* Wrapt de content op mobiele schermen */
+@media (max-width: 768px) {
+    .content {
+        margin-left: 0;
+        padding: 15px;
+        word-wrap: break-word; /* Zorgt ervoor dat de content op kleine schermen wrapt */
+    }
+}
+
+/* 4. HEADER */
+.header {
+    background-color: #1a1a1a;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 1.8em;
+    font-weight: 600;
+}
+
+/* 5. FOOTER */
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    background-color: #1a1a1a;
+    color: white;
+    text-align: center;
+    font-size: 0.9em;
+    padding: 0;
+    margin-top: auto; /* Zorgt ervoor dat de footer naar de onderkant van de pagina wordt gedrukt */
+}
+
+
+/* 6. BUTTONS
+----------------------------------------- */
+.button {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #1a1a1a;
+    cursor: pointer;
+    transition: border-color 0.25s;
+    width: 100%;
+}
+
+.button:hover {
+    border-color: #646cff;
+}
+
+.button:focus,
+.button:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* 7. FORMS (INPUTS & ERRORS)
+----------------------------------------- */
+.form-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.input-field {
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+}
+
+.input-error {
+    color: red;
+    font-size: 0.9em;
+}
+
+/* 8. DASHBOARD
+----------------------------------------- */
+.dashboard-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.dashboard-header {
+    font-size: 2.4em;
+    margin-bottom: 20px;
+}
+
+.dashboard-content {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.dashboard-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    margin-top: 10px;
+    cursor: pointer;
+    background-color: #1a1a1a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.dashboard-button:hover {
+    background-color: #646cff;
+}
+
+/* 9. NAVBAR
+----------------------------------------- */
+/* Navbar Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Zorgt ervoor dat de items aan beide kanten worden uitgelijnd */
+    align-items: center;            /* Centreert de items verticaal */
+    height: 50px;                   /* Hoogte van de navbar */
+    background-color: #1a1a1a;      /* Achtergrondkleur */
+    padding: 0 20px;                /* Padding binnen de navbar */
+    color: white;                   /* Tekstkleur */
+    position: relative;             /* Voor het positioneren van het dropdown menu */
+}
+
+/* Links in de navbar */
+.nav-links {
+    display: flex;
+    gap: 20px;                      /* Ruimte tussen de links */
+}
+
+/* Hamburger menu voor mobiel */
+.hamburger {
+    display: none;                  /* Verborgen op grotere schermen */
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Verborgen menu voor mobiel */
+.nav-links-mobile {
+    display: none;
+    position: absolute;
+    top: 50px;                      /* Positie direct onder de navbar */
+    right: 20px;                    /* Uitgelijnd met de rechterkant */
+    background-color: #1a1a1a;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Toon het mobiele menu wanneer het actief is */
+.nav-links-mobile.active {
+    display: flex;
+}
+
+/* Link styling */
+.nav-links a,
+.nav-links-mobile a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links-mobile a:hover {
+    background-color: #333;
+    border-radius: 5px;
+}
+
+/* Responsive styling: verberg de standaard links op kleinere schermen en toon de hamburger */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+    }
+}
+
