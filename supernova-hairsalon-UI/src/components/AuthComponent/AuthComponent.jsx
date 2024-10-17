@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '/src/styles/global.css';
+import '/src/styles/global.css';  // Zorg ervoor dat de globale CSS correct wordt geïmporteerd
 
 const AuthComponent = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
+    const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));  // Controleer of de user is ingelogd
     const navigate = useNavigate();
 
     const handleLogin = async (e) => {
@@ -23,28 +23,28 @@ const AuthComponent = () => {
             const data = await response.json();
 
             if (response.ok) {
-                localStorage.setItem('token', data.token);
+                localStorage.setItem('token', data.token);  // Sla de JWT-token op
                 setIsLoggedIn(true);
-                navigate('/dashboard');
+                navigate('/dashboard');  // Navigeer naar het dashboard na succesvolle login
             } else {
-                setError(data.message || 'Invalid credentials');
+                setError(data.message || 'Invalid credentials');  // Toon foutmelding bij mislukte login
             }
         } catch (error) {
-            setError('Failed to connect to the server');
+            setError('Failed to connect to the server');  // Foutmelding bij verbindingsproblemen
         }
     };
 
     const handleLogout = () => {
-        localStorage.removeItem('token');
+        localStorage.removeItem('token');  // Verwijder token bij logout
         setIsLoggedIn(false);
-        navigate('/');
+        navigate('/');  // Navigeer terug naar loginpagina
     };
 
     return (
         <div className="form-container">
             {isLoggedIn ? (
                 <>
-                    <h2>Welcome to the Dashboard!</h2>
+                    <h2>Welkom op het Dashboard!</h2>
                     <button onClick={handleLogout} className="button">
                         Logout
                     </button>

@@ -181,16 +181,17 @@ body {
     justify-content: space-between; /* Zorgt ervoor dat de items aan beide kanten worden uitgelijnd */
     align-items: center;            /* Centreert de items verticaal */
     height: 50px;                   /* Hoogte van de navbar */
-    background-color: #1a1a1a;      /* Achtergrondkleur */
-    padding: 0 20px;                /* Padding binnen de navbar */
+
     color: white;                   /* Tekstkleur */
     position: relative;             /* Voor het positioneren van het dropdown menu */
 }
 
+
 /* Links in de navbar */
 .nav-links {
     display: flex;
-    gap: 20px;                      /* Ruimte tussen de links */
+    gap: 20px;
+   /* Ruimte tussen de links */
 }
 
 /* Hamburger menu voor mobiel */

@@ -1,14 +1,25 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import AuthComponent from './components/AuthComponent/AuthComponent.jsx'; // Gebruik AuthComponent voor login en logout
-import Dashboard from './pages/Dashboard/Dashboard.jsx';
+import AuthComponent from './components/AuthComponent/AuthComponent.jsx'; // Login
+import Dashboard from './pages/Dashboard/Dashboard.jsx'; // Admin Dashboard
+import ProtectedRoute from './routes/ProtectedRoute/ProtectedRoute.jsx'; // ProtectedRoute voor beveiligde routes
 
 const App = () => {
     return (
         <Router>
             <Routes>
-                <Route path="/" element={<AuthComponent />} /> {/* AuthComponent beheert login en logout */}
-                <Route path="/dashboard" element={<Dashboard />} />
+                {/* Route voor inloggen */}
+                <Route path="/" element={<AuthComponent />} />
+
+                {/* Beveiligde route voor admin dashboard */}
+                <Route
+                    path="/dashboard/*"
+                    element={
+                        <ProtectedRoute>
+                            <Dashboard />
+                        </ProtectedRoute>
+                    }
+                />
             </Routes>
         </Router>
     );
