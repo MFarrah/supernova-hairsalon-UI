@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import AuthComponent from './components/AuthComponent/AuthComponent.jsx'; // Login
+import AuthComponent from './components/features/auth/AuthComponent.jsx'; // Login
 import Dashboard from './pages/Dashboard/Dashboard.jsx'; // Admin Dashboard
 import ProtectedRoute from './routes/ProtectedRoute/ProtectedRoute.jsx'; // ProtectedRoute voor beveiligde routes
 

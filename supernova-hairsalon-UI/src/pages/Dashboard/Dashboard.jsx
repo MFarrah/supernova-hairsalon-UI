@@ -1,14 +1,14 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import OverviewComponent from '../../components/OverviewComponent/OverviewComponent';
-import BookingsComponent from '../../components/BookingsComponent/BookingsComponent';
-import CustomersComponent from '../../components/CustomersComponent/CustomersComponent';
-import EmployeesComponent from '../../components/EmployeesComponent/EmployeesComponent';
-import RosterComponent from '../../components/RosterComponent/RosterComponent';
-import SchedulesComponent from '../../components/SchedulesComponent/SchedulesComponent';
-import ServicesComponent from '../../components/ServicesComponent/ServicesComponent';
+import OverviewComponent from '../../components/features/overviews/OverviewComponent.jsx';
+import BookingsComponent from '../../components/features/bookings/BookingsComponent.jsx';
+import CustomersComponent from '../../components/features/customers/CustomersComponent.jsx';
+import EmployeesComponent from '../../components/features/employees/EmployeesComponent.jsx';
+import RosterComponent from '../../components/features/rosters/RosterComponent.jsx';
+import SchedulesComponent from '../../components/features/schedules/SchedulesComponent.jsx';
+import ServicesComponent from '../../components/features/products/ServicesComponent.jsx';
 import Navbar from '../../components/Navbar/Navbar';
-import ProfileComponent from "../../components/ProfileComponent/ProfileComponent.jsx";  // Zorg ervoor dat de navbar correct is geïmporteerd
+import ProfileComponent from "../../components/features/profiles/ProfileComponent.jsx";  // Zorg ervoor dat de navbar correct is geïmporteerd
 
 const Dashboard = () => {
     return (
