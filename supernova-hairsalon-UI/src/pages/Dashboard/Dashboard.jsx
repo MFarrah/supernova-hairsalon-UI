@@ -6,7 +6,7 @@ import CustomersComponent from '../../components/features/customers/CustomersCom
 import EmployeesComponent from '../../components/features/employees/EmployeesComponent.jsx';
 import RosterComponent from '../../components/features/rosters/RosterComponent.jsx';
 import SchedulesComponent from '../../components/features/schedules/SchedulesComponent.jsx';
-import ServicesComponent from '../../components/features/products/ServicesComponent.jsx';
+import ServicesComponent from '../../components/features/services/ServicesComponent.jsx';
 import Navbar from '../../components/Navbar/Navbar';
 import ProfileComponent from "../../components/features/profiles/ProfileComponent.jsx";  // Zorg ervoor dat de navbar correct is geïmporteerd
 
