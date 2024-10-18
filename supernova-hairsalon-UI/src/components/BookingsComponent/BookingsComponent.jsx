@@ -4,7 +4,9 @@ const BookingsComponent = () => {
     return (
         <div>
             <h2>Bookings</h2>
-            <p>Hier kunt u alle boekingen beheren.</p>
+
+            <p>Hier komt een component met boeking kaarten</p>
+            <p>Elke kaart is een boeking  kan worden aangepast of verwijderd worden</p>
         </div>
     );
 };

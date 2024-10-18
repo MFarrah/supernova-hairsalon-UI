@@ -7,7 +7,8 @@ import EmployeesComponent from '../../components/EmployeesComponent/EmployeesCom
 import RosterComponent from '../../components/RosterComponent/RosterComponent';
 import SchedulesComponent from '../../components/SchedulesComponent/SchedulesComponent';
 import ServicesComponent from '../../components/ServicesComponent/ServicesComponent';
-import Navbar from '../../components/Navbar/Navbar';  // Zorg ervoor dat de navbar correct is geïmporteerd
+import Navbar from '../../components/Navbar/Navbar';
+import ProfileComponent from "../../components/ProfileComponent/ProfileComponent.jsx";  // Zorg ervoor dat de navbar correct is geïmporteerd
 
 const Dashboard = () => {
     return (
@@ -18,6 +19,7 @@ const Dashboard = () => {
                 <div className="content">
                     {/* Dynamische routing in het content-gebied */}
                     <Routes>
+                        <Route path="profile" element={<ProfileComponent />} />
                         <Route path="overview" element={<OverviewComponent />} />
                         <Route path="bookings" element={<BookingsComponent />} />
                         <Route path="customers" element={<CustomersComponent />} />

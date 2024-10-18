@@ -15,6 +15,7 @@ const Navbar = () => {
 
             {/* Links voor grotere schermen */}
             <div className="nav-links">
+                <Link to="/dashboard/profile">My Profile</Link>
                 <Link to="/dashboard/overview">Overview</Link>
                 <Link to="/dashboard/bookings">Bookings</Link>
                 <Link to="/dashboard/customers">Customers</Link>
@@ -31,6 +32,7 @@ const Navbar = () => {
 
             {/* Mobiel menu */}
             <div className={`nav-links-mobile ${menuOpen ? 'active' : ''}`}>
+                <Link to="/dashboard/profile">My Profile</Link>
                 <Link to="/dashboard/overview">Overview</Link>
                 <Link to="/dashboard/bookings">Bookings</Link>
                 <Link to="/dashboard/customers">Customers</Link>

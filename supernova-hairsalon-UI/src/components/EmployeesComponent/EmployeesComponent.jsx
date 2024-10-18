@@ -4,7 +4,9 @@ const EmployeesComponent = () => {
     return (
         <div>
             <h2>Employees</h2>
-            <p>Hier kunt u alle werknemers beheren.</p>
+            <p>Hier komt een component met employee kaarten</p>
+            <p>Elke kaart is een employee profiel en kan worden aangepast of verwijderd worden</p>
+            <p>de laatste kaart is een kaart met een plusje, hier kan een nieuwe employee worden aangemaakt</p>
         </div>
     );
 };

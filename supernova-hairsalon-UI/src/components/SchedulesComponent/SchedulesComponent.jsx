@@ -3,8 +3,9 @@ import React from 'react';
 const SchedulesComponent = () => {
     return (
         <div>
-            <h2>Schedules</h2>
-            <p>Hier kunt u de schema's beheren.</p>
+            <h2>Werkroosters</h2>
+            <p>Hier komt een component met service kaarten</p>
+            <p>Elke kaart is een werkrooster van employee profiel en kan worden aangepast of verwijderd worden</p>
         </div>
     );
 };
