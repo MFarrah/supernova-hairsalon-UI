@@ -20,8 +20,8 @@
     line-height: 1.5;
     font-weight: 400;
     color-scheme: light dark;
-    color: rgba(255, 255, 255, 0.87);
-    background-color: #242424;
+    color: rgba(128, 141, 137, 0.87);
+    background-color: #005f77;
 
     font-synthesis: none;
     text-rendering: optimizeLegibility;
@@ -33,11 +33,11 @@
 ----------------------------------------- */
 a {
     font-weight: 500;
-    color: #646cff;
+    color: #ffbc64;
     text-decoration: inherit;
 }
 a:hover {
-    color: #535bf2;
+    color: #949494;
 }
 
 /* 3. LAYOUT & BODY
@@ -55,8 +55,8 @@ body {
     margin-left: 10px; /* 10px marge naar links */
 
     padding: 24px;
-    background-color: #919191;
-    color: #333;
+    background-color: #3f3f3f;
+    color: #cccccc;
 }
 
 /* Wrapt de content op mobiele schermen */
@@ -178,45 +178,43 @@ body {
 /* Navbar Styling */
 .navbar {
     display: flex;
-    justify-content: space-between; /* Zorgt ervoor dat de items aan beide kanten worden uitgelijnd */
-    align-items: center;            /* Centreert de items verticaal */
-    height: 50px;                   /* Hoogte van de navbar */
-
-    color: white;                   /* Tekstkleur */
-    position: relative;             /* Voor het positioneren van het dropdown menu */
+    justify-content: space-between;
+    align-items: end;
+    height: 100px;
+    padding: 10px 20px;
+    background-color: #034154;
+    color: white;
 }
 
-
-/* Links in de navbar */
 .nav-links {
     display: flex;
-    gap: 20px;
-   /* Ruimte tussen de links */
+    align-items: center;
+    gap: 15px; /* Space between navbar items */
 }
 
-/* Hamburger menu voor mobiel */
 .hamburger {
-    display: none;                  /* Verborgen op grotere schermen */
-    font-size: 24px;
+    display: none; /* Hide for larger screens */
     cursor: pointer;
 }
 
-/* Verborgen menu voor mobiel */
-.nav-links-mobile {
-    display: none;
-    position: absolute;
-    top: 50px;                      /* Positie direct onder de navbar */
-    right: 20px;                    /* Uitgelijnd met de rechterkant */
-    background-color: #1a1a1a;
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px;
-    border-radius: 5px;
-}
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
 
-/* Toon het mobiele menu wanneer het actief is */
-.nav-links-mobile.active {
-    display: flex;
+    .nav-links {
+        display: none;
+    }
+
+    .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 50px;
+        right: 20px;
+        background-color: #034154;
+        padding: 10px;
+    }
 }
 
 /* Link styling */

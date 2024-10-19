@@ -1,65 +1,40 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';  // For navigation
-import '../../styles/global.css';  // Import your global styles
+import { Link } from 'react-router-dom';
+import { useAuth } from '/src/context/auth/AuthContext.jsx'; // Gebruik de auth-context voor login en logout
+import AuthComponent from '../auth/AuthComponent.jsx'; // Import AuthComponent voor login
 
-const Navbar = ({ userRole }) => {
+const Navbar = () => {
+    const { user, logout } = useAuth();  // Haal de loginstatus en logout-functie uit context
     const [menuOpen, setMenuOpen] = useState(false);
 
-    // Toggle mobile menu visibility
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
     };
 
     return (
         <nav className="navbar">
-            {/* Links for larger screens */}
             <div className="nav-links">
-                <Link to="/dashboard/profile">My Profile</Link>
-                <Link to="/dashboard/overview">Overview</Link>
+                {/* Toon de juiste links voor ingelogde gebruikers */}
+                {user ? (
+                    <>
+                        <Link to="/dashboard/profile">My Profile</Link>
+                        <Link to="/dashboard/overview">Overview</Link>
+                        {user.role === 'ADMIN' && <Link to="/dashboard/admin">Admin Dashboard</Link>}
+                        {user.role === 'EMPLOYEE' && <Link to="/dashboard/employee">Employee Dashboard</Link>}
+                        {user.role === 'CUSTOMER' && <Link to="/dashboard/customer">Customer Dashboard</Link>}
 
-                {/* Conditionally render menu based on the role */}
-                {userRole === 'ADMIN' && (
-                    <>
-                        <Link to="/dashboard/bookings">Bookings</Link>
-                        <Link to="/dashboard/customers">Customers</Link>
-                        <Link to="/dashboard/employees">Employees</Link>
-                        <Link to="/dashboard/roster">Roster</Link>
-                        <Link to="/dashboard/schedules">Schedules</Link>
-                        <Link to="/dashboard/services">Services</Link>
+                        {/* Logout knop */}
+                        <button onClick={logout} className="button">Logout</button>
                     </>
-                )}
-                {userRole === 'Customer' && (
-                    <>
-                        <Link to="/dashboard/bookings">Bookings</Link>
-                    </>
+                ) : (
+                    // Als de gebruiker niet is ingelogd, toon het loginformulier
+                    <AuthComponent />
                 )}
             </div>
 
-            {/* Hamburger menu for smaller screens */}
+            {/* Hamburger menu voor kleinere schermen */}
             <div className="hamburger" onClick={toggleMenu}>
-                &#9776; {/* Hamburger icon */}
-            </div>
-
-            {/* Mobile menu */}
-            <div className={`nav-links-mobile ${menuOpen ? 'active' : ''}`}>
-                <Link to="/dashboard/profile">My Profile</Link>
-                <Link to="/dashboard/overview">Overview</Link>
-
-                {userRole === 'ADMIN' && (
-                    <>
-                        <Link to="/dashboard/bookings">Bookings</Link>
-                        <Link to="/dashboard/customers">Customers</Link>
-                        <Link to="/dashboard/employees">Employees</Link>
-                        <Link to="/dashboard/roster">Roster</Link>
-                        <Link to="/dashboard/schedules">Schedules</Link>
-                        <Link to="/dashboard/services">Services</Link>
-                    </>
-                )}
-                {userRole === 'CUSTOMER' && (
-                    <>
-                        <Link to="/dashboard/bookings">Bookings</Link>
-                    </>
-                )}
+                &#9776;
             </div>
         </nav>
     );

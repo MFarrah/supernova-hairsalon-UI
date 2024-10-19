@@ -1,27 +1,24 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import AuthComponent from './components/features/auth/AuthComponent.jsx'; // Login
-import Dashboard from './pages/Dashboard/Dashboard.jsx'; // Admin Dashboard
-import ProtectedRoute from '/routes/auth/PrivateRoute.js'; // ProtectedRoute voor beveiligde routes
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Navbar from './components/Navbar/Navbar.jsx';
+import Dashboard from './pages/Dashboard/Dashboard.jsx';
+import PrivateRoute from './routes/auth/PrivateRoute.jsx';
+import { AuthProvider } from './context/auth/AuthContext.jsx';
 
 const App = () => {
     return (
-        <Router>
-            <Routes>
-                {/* Route voor inloggen */}
-                <Route path="/" element={<AuthComponent />} />
+        <AuthProvider>
+            <Router>
+                <Navbar />
+                <Routes>
+                    {/* Verwijder de login-route als het in de Navbar zit */}
+                    {/* <Route path="/" element={<AuthComponent />} /> */}
 
-                {/* Beveiligde route voor admin dashboard */}
-                <Route
-                    path="/dashboard/*"
-                    element={
-                        <ProtectedRoute>
-                            <Dashboard />
-                        </ProtectedRoute>
-                    }
-                />
-            </Routes>
-        </Router>
+                    <Route path="/dashboard" element={<PrivateRoute roles={['ADMIN', 'EMPLOYEE', 'CUSTOMER']}><Dashboard /></PrivateRoute>} />
+                    <Route path="*" element={<Navigate to="/" />} />
+                </Routes>
+            </Router>
+        </AuthProvider>
     );
 };
 

@@ -1,21 +1,20 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import OverviewComponent from '../../components/features/overviews/OverviewComponent.jsx';
-import BookingsComponent from '../../components/features/bookings/BookingsComponent.jsx';
-import CustomersComponent from '../../components/features/customers/CustomersComponent.jsx';
-import EmployeesComponent from '../../components/features/employees/EmployeesComponent.jsx';
-import RosterComponent from '../../components/features/rosters/RosterComponent.jsx';
-import SchedulesComponent from '../../components/features/schedules/SchedulesComponent.jsx';
-import ServicesComponent from '../../components/features/services/ServicesComponent.jsx';
-import Navbar from '../../components/Navbar/Navbar';
-import ProfileComponent from "../../components/features/profiles/ProfileComponent.jsx";  // Zorg ervoor dat de navbar correct is geïmporteerd
+import OverviewComponent from '../../components/features/overviews/OverviewComponent';
+import BookingsComponent from '../../components/features/bookings/BookingsComponent';
+import CustomersComponent from '../../components/features/customers/CustomersComponent';
+import EmployeesComponent from '../../components/features/employees/EmployeesComponent';
+import RosterComponent from '../../components/features/rosters/RosterComponent';
+import SchedulesComponent from '../../components/features/schedules/SchedulesComponent';
+import ServicesComponent from '../../components/features/services/ServicesComponent';
+import ProfileComponent from "../../components/features/profiles/ProfileComponent";  // Zorg ervoor dat de navbar correct is geïmporteerd
 
 const Dashboard = () => {
     return (
         <>
             <div className="dashboard-container">
                 <h1>Admin Dashboard</h1>
-                <Navbar />
+
                 <div className="content">
                     {/* Dynamische routing in het content-gebied */}
                     <Routes>
