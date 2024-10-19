@@ -1,4 +1,4 @@
-import { apiService } from '../../services/apiService';
+import { apiService } from '/src/services/apiService.js';
 
 const API_URL = `${import.meta.env.VITE_API_URL}/auth`;  // Gebruik VITE_API_URL uit environment
 

@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { login } from '../../features/auth/authService';
-import { useAuth } from '../../context/AuthContext';  // Context voor de gebruiker
+import { login } from '/src/services/auth/authService.js';
+import { useAuth } from '/src/context/auth/AuthContext.js';  // Context voor de gebruiker
 
 const useLogin = () => {
     const [loading, setLoading] = useState(false);
