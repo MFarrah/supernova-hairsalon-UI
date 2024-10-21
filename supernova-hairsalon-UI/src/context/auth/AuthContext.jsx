@@ -7,7 +7,6 @@ export const AuthProvider = ({ children }) => {
     const [userRole, setUserRole] = useState(null);
     const [token, setToken] = useState(null);
 
-    // Controleer of de gebruiker al is ingelogd op basis van localStorage
     useEffect(() => {
         const storedUser = localStorage.getItem('email');
         const storedRole = localStorage.getItem('role');

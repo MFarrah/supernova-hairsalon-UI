@@ -14,7 +14,7 @@ const App = () => {
                     {/* Verwijder de login-route als het in de Navbar zit */}
                     {/* <Route path="/" element={<AuthComponent />} /> */}
 
-                    <Route path="/dashboard" element={<PrivateRoute roles={['ADMIN', 'EMPLOYEE', 'CUSTOMER']}><Dashboard /></PrivateRoute>} />
+
                     <Route path="*" element={<Navigate to="/" />} />
                 </Routes>
             </Router>
