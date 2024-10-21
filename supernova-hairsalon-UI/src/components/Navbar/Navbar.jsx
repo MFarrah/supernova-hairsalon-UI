@@ -14,10 +14,10 @@ const Navbar = () => {
 
     return (
         <nav className="navbar">
+                        <Link className="logolink" to="/"><img className="logo" src={Supernova_Logo} alt="Logo" /></Link>
             <div className="nav-links">
                 {user ? (
                     <>
-                        <Link to="/"><img className="logo" src={Supernova_Logo} alt="Logo" /></Link>
                         <Link to="/dashboard/overview">Overview</Link>
                         {userRole === 'ROLE_ADMIN' && <Link to="/dashboard/bookings">Bookings</Link>}
                         {userRole === 'ROLE_ADMIN' && <Link to="/dashboard/customers">Customers</Link>}
