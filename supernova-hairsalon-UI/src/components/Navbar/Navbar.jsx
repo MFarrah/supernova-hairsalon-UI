@@ -14,27 +14,38 @@ const Navbar = () => {
 
     return (
         <nav className="navbar">
-                        <Link className="logolink" to="/"><img className="logo" src={Supernova_Logo} alt="Logo" /></Link>
-            <div className="nav-links">
+            <div className="hamburger" onClick={toggleMenu}>
+                &#9776;
+            </div>
+            <Link className="logolink" to="/">
+                <img className="logo" src={Supernova_Logo} alt="Logo" />
+            </Link>
+
+            <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
                 {user ? (
                     <>
                         <Link to="/dashboard/overview">Overview</Link>
-                        {userRole === 'ROLE_ADMIN' && <Link to="/dashboard/bookings">Bookings</Link>}
-                        {userRole === 'ROLE_ADMIN' && <Link to="/dashboard/customers">Customers</Link>}
-                        {userRole === 'ROLE_ADMIN' && <Link to="/dashboard/employees">Employees</Link>}
-                        {userRole === 'ROLE_ADMIN' && <Link to="/dashboard/services">Services</Link>}
-                        {userRole === 'ROLE_ADMIN' && <Link to="/dashboard/rosters">Rosters</Link>}
-                        {userRole === 'ROLE_ADMIN' && <Link to="/dashboard/schedules">Schedules</Link>}
-                        {userRole === 'ROLE_EMPLOYEE' && <Link to="/dashboard/employee">Employee Dashboard</Link>}
-                        {userRole === 'ROLE_CUSTOMER' && <Link to="/dashboard/customer">Customer Dashboard</Link>}
+                        {userRole === 'ROLE_ADMIN' && (
+                            <>
+                                <Link to="/dashboard/bookings">Bookings</Link>
+                                <Link to="/dashboard/customers">Customers</Link>
+                                <Link to="/dashboard/employees">Employees</Link>
+                                <Link to="/dashboard/services">Services</Link>
+                                <Link to="/dashboard/rosters">Rosters</Link>
+                                <Link to="/dashboard/schedules">Schedules</Link>
+                            </>
+                        )}
+                        {userRole === 'ROLE_EMPLOYEE' && (
+                            <Link to="/dashboard/employee">Employee Dashboard</Link>
+                        )}
+                        {userRole === 'ROLE_CUSTOMER' && (
+                            <Link to="/dashboard/customer">Customer Dashboard</Link>
+                        )}
                         <button onClick={logout} className="button">Logout</button>
                     </>
                 ) : (
                     <AuthComponent />
                 )}
-            </div>
-            <div className="hamburger" onClick={toggleMenu}>
-                &#9776;
             </div>
         </nav>
     );

@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const API_URL = "http://localhost:8080/api/employees";
 
-// Full CRUD Employee Service
+
 const EmployeeService = {
     getAllEmployees: async (token) => {
         try {
@@ -11,12 +11,14 @@ const EmployeeService = {
                     Authorization: `Bearer ${token}` // De JWT-token wordt als argument doorgegeven
                 }
             });
-            return response.data;
+            return response; // Geef het volledige response object terug, niet alleen response.data
         } catch (error) {
             console.error("Error fetching employees:", error);
             throw error;
         }
     },
+};
+
 
     getEmployeeById: async (id, token) => {
         try {

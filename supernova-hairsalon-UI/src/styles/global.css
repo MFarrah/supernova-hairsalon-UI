@@ -82,7 +82,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 50px;
-    background-color: #1a1a1a;
+    background-color: rgba(217, 196, 183, 0.33);
     color: white;
     text-align: center;
     font-size: 0.9em;
@@ -180,7 +180,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 60px; 
+    height: 60px;
     padding: 15px 50px;
     background-color: #c3bba6;
     color: white;

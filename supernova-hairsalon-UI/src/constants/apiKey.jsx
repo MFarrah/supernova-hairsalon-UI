@@ -1,0 +1,3 @@
+const API_URL = "http://localhost:8080/api/employees";
+
+export default API_URL;

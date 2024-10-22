@@ -4,7 +4,7 @@ import Navbar from './components/Navbar/Navbar.jsx';
 import Dashboard from './pages/Dashboard/Dashboard.jsx';
 import PrivateRoute from './routes/auth/PrivateRoute.jsx';
 import { AuthProvider } from './context/auth/AuthContext.jsx';
-import DataCards from '/src/components/DataCardsComponent/DataCards.jsx'; // Zorg ervoor dat de DataCards component correct is geïmporteerd
+import DataCard from '/src/components/DataCards/DataCard.jsx';
 
 const App = () => {
     return (
@@ -12,13 +12,15 @@ const App = () => {
             <Router>
                 <Navbar />
                 <Routes>
-                    <Route path="/" element={<Dashboard />} />
-                        <Route path="/dashboard/employees" element={
+                    <Route path="*" element={<Dashboard />} />
+                    <Route
+                        path="/dashboard/*"
+                        element={
                             <PrivateRoute allowedRoles={['ROLE_ADMIN', 'ROLE_EMPLOYEE']}>
-                                <DataCards />
+                                <DataCard />
                             </PrivateRoute>
-                        } />
-
+                        }
+                    />
                     <Route path="*" element={<Navigate to="/" />} />
                 </Routes>
             </Router>
