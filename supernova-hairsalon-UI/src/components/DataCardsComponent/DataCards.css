@@ -1,29 +1,57 @@
+/* Container styling */
 .data-cards-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around; /* Zorgt ervoor dat kaarten netjes verdeeld zijn */
-    max-width: 700px; /* Maximale breedte van de container */
-    margin: 0 auto; /* Centreert de container op de pagina */
+    justify-content: flex-start; /* Zorgt ervoor dat de kaarten strak naast elkaar staan */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f3f2ef; /* Een lichte achtergrond voor contrast */
 }
 
+/* Kaarten styling */
 .card {
-    background-color: #f9f9f9; /* Aangename achtergrondkleur */
-    border-radius: 10px; /* Ronde hoeken */
-    padding: 20px; /* Ruimte binnen de kaarten */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Schaduw voor diepte */
-    margin: 10px; /* Ruimte tussen de kaarten */
-    width: calc(33.333% - 20px); /* Brede flexbox kaarten van gelijke grootte */
+    background-color: #c3bba6; /* Gebruik een van de gegeven kleuren */
+    border-radius: 12px; /* Meer afgeronde hoeken voor een elegantere look */
+    padding: 25px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Diepere schaduw voor een premium gevoel */
+    margin: 15px;
+    width: calc(33.333% - 30px); /* Strakkere layout */
     box-sizing: border-box;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
+/* Kaarten hover-effect */
+.card:hover {
+    transform: translateY(-5px); /* Klein hover-effect voor dynamisch gevoel */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Titel styling */
+.card h3 {
+    margin-top: 0;
+    font-size: 1.6rem;
+    color: #333;
+    font-weight: 700;
+}
+
+/* Tekst styling */
+.card p {
+    margin: 10px 0;
+    color: #494949; /* Gebruik een iets donkerdere kleur voor de tekst */
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Responsiviteit */
 @media (max-width: 768px) {
     .card {
-        width: calc(50% - 20px); /* Aanpassing voor kleinere schermen */
+        width: calc(50% - 30px);
     }
 }
 
 @media (max-width: 480px) {
     .card {
-        width: calc(100% - 20px); /* Eén kaart per rij voor zeer kleine schermen */
+        width: calc(100% - 30px);
     }
 }
