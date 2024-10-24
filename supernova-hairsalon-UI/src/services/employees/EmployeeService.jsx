@@ -2,23 +2,20 @@ import axios from 'axios';
 
 const API_URL = "http://localhost:8080/api/employees";
 
-
 const EmployeeService = {
     getAllEmployees: async (token) => {
         try {
             const response = await axios.get(`${API_URL}/all`, {
                 headers: {
-                    Authorization: `Bearer ${token}` // De JWT-token wordt als argument doorgegeven
+                    Authorization: `Bearer ${token}`
                 }
             });
-            return response; // Geef het volledige response object terug, niet alleen response.data
+            return response.data;
         } catch (error) {
             console.error("Error fetching employees:", error);
             throw error;
         }
     },
-};
-
 
     getEmployeeById: async (id, token) => {
         try {

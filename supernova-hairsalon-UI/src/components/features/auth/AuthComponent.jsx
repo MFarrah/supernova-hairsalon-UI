@@ -18,7 +18,7 @@ const AuthComponent = () => {
             const response = await loginUser(email, password);
             const { token, role } = response.data;
             login(email, role, token);
-            navigate('/dashboard');
+            navigate('/');
         } catch (err) {
             setError('Login failed, please check your credentials.');
         }

@@ -1,0 +1,134 @@
+/* Styling voor de navbar */
+.navbar {
+    background-color: #1a1a1a;
+    padding: 10px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar-list {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.navbar-list li {
+    margin: 0 15px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 500;
+    color: white;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 8px;
+}
+
+.navbar-list li:hover {
+    background-color: #444444;
+    color: #ffbc64;
+}
+
+#auth {
+    position: relative;
+}
+
+/* Dropdown styling */
+.dropdown-login-form {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: rgba(244, 241, 230, 0);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 200px;
+    font-size: 10px; /* Smaller font size */
+    display: none; /* Initially hidden */
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(-10px);
+}
+
+/* Show the dropdown with slide-down and fade effect */
+#auth:hover .dropdown-login-form,
+.navbar-auth-button:focus + .dropdown-login-form {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dropdown-login-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown-login-form .form-field {
+    margin-bottom: 10px;
+}
+
+.input-field {
+    padding: 8px;
+    font-size: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.button {
+    background-color: #444444;
+    color: white;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #ffbc64;
+    color: #333;
+}
+
+.input-error {
+    color: red;
+    font-size: 8px;
+    margin-top: 5px;
+}
+
+/* Auth button styling */
+.navbar-auth-button {
+    background-color: transparent;
+    color: #ffbc64;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1em;
+    position: relative;
+}
+
+.navbar-auth-button:hover {
+    color: #ffffff;
+}
+
+/* Clean sliding effect for smaller screens */
+@media (max-width: 768px) {
+    .navbar-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar-list li {
+        margin: 10px 0;
+    }
+
+    .dropdown-login-form {
+        top: 50px;
+        right: 50%;
+        transform: translateX(50%) translateY(-10px);
+    }
+}

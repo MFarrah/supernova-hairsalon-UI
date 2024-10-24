@@ -1,15 +1,14 @@
 import React from 'react';
-import EmployeeService from '/src/services/employees/EmployeeService.jsx';
-import employeeFields from '/src/config/ResponseFields/employeeFields.jsx';
 import DataCard from '../DataCard.jsx';
 
 const EmployeeDataCards = () => {
     return (
         <DataCard
-            service={EmployeeService.getAllEmployees}  // Haalt alle employees op
-            fields={employeeFields}  // Geeft de velden voor een employee weer
-            type="employee"  // Specificeert dat het om employee-data gaat
+            service={BookingService.getAllBookings}  // Haalt alle bookings op
+            fields={['id', 'customerName', 'bookingDate']}  // Geeft de velden voor een booking weer
+            type="booking"  // Specificeert dat het om booking-data gaat
         />
+
     );
 };
 

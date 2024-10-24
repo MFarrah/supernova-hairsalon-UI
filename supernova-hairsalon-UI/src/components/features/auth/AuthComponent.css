@@ -1,34 +1,66 @@
 .auth-container {
     display: flex;
-
     align-items: center;
     justify-content: center;
+    background-color: #1a1a1a; /* Match de achtergrondkleur van de navbar */
+    padding: 20px; /* Voegt wat padding toe voor ademruimte */
+    border-radius: 8px; /* Match de afgeronde hoeken van de navbar-items */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Zelfde schaduw als de navbar */
 }
 
 .auth-form {
     display: flex;
-    flex-direction: row; /* Horizontal alignment */
-    align-items: center;
-    width: 800px;
-    gap: 10px; /* Add space between form fields */
-    margin: 0;
+    flex-direction: column; /* Pas deze aan naar een kolom voor een meer overzichtelijke indeling */
+    align-items: flex-start;
+    width: 100%; /* Zorgt dat het formulier de volledige breedte benut */
+    max-width: 400px; /* Stel een maximale breedte in om het formulier niet te groot te maken */
+    gap: 15px; /* Meer ruimte tussen velden voor een overzichtelijke lay-out */
+    padding: 20px;
+    background-color: rgba(14, 7, 32, 0); /* Maak de achtergrondkleur lichter voor contrast */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .form-field {
     display: flex;
-    align-items: center;
-    width: 500px;
+    flex-direction: column; /* Zet de veld-labels en invoervelden in een kolom */
+    width: 100%;
     gap: 5px;
 }
 
 .input-field {
-    margin-top: 10px;
-    padding: 10px 10px;
+    width: 100%; /* Zorg dat het invoerveld de volledige breedte van de container heeft */
+    padding: 10px;
     font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #1a1a1a; /* Zelfde achtergrondkleur als de navbar */
+    color: white; /* Witte tekstkleur voor betere leesbaarheid */
+}
+
+.input-field:focus {
+    border-color: #ffbc64; /* Accentkleur voor focus */
+    outline: none;
 }
 
 .input-error {
     color: red;
     font-size: 10px;
-    margin-left: 10px;
+    margin-left: 5px;
+}
+
+/* Knoppen styling om consistent te zijn met de navbar */
+.button {
+    background-color: #444444;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #ffbc64;
+    color: #333;
 }

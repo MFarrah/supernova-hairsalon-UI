@@ -1,30 +1,30 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Navbar from './components/Navbar/Navbar.jsx';
-import Dashboard from './pages/Dashboard/Dashboard.jsx';
-import PrivateRoute from './routes/auth/PrivateRoute.jsx';
-import { AuthProvider } from './context/auth/AuthContext.jsx';
-import DataCard from '/src/components/DataCards/DataCard.jsx';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import EmployeesPage from '/src/pages/employees/EmployeesPage.jsx';
+import CustomersPage from '/src/pages/customers/CustomersPage.jsx';
+import BookingsPage from '/src/pages/bookings/BookingsPage.jsx';
+import OrdersPage from '/src/pages/orders/OrdersPage.jsx';
+import SchedulesPage from '/src/pages/schedules/SchedulesPage.jsx';
+import RostersPage from '/src/pages/rosters/RostersPage.jsx';
+import Navbar from '/src/components/Navbar/Navbar.jsx';
+import LandingPage from './pages/LandingPage.jsx';
 
 const App = () => {
     return (
-        <AuthProvider>
-            <Router>
-                <Navbar />
+        <Router>
+            <Navbar />
+            <div>
                 <Routes>
-                    <Route path="*" element={<Dashboard />} />
-                    <Route
-                        path="/dashboard/*"
-                        element={
-                            <PrivateRoute allowedRoles={['ROLE_ADMIN', 'ROLE_EMPLOYEE']}>
-                                <DataCard />
-                            </PrivateRoute>
-                        }
-                    />
-                    <Route path="*" element={<Navigate to="/" />} />
+                    <Route path="/" element={<LandingPage />} />
+                    <Route path="/employees/*" element={<EmployeesPage />} />
+                    <Route path="/customers/*" element={<CustomersPage />} />
+                    <Route path="/bookings/*" element={<BookingsPage />} />
+                    <Route path="/orders/*" element={<OrdersPage />} />
+                    <Route path="/schedules/*" element={<SchedulesPage />} />
+                    <Route path="/rosters/*" element={<RostersPage />} />
                 </Routes>
-            </Router>
-        </AuthProvider>
+            </div>
+        </Router>
     );
 };
 

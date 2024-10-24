@@ -5,8 +5,7 @@ import { useAuth } from '/src/context/auth/AuthContext.jsx';
 const PrivateRoute = ({ children, allowedRoles }) => {
     const { user, userRole } = useAuth();
 
-    // Voeg checks toe om te voorkomen dat includes wordt aangeroepen op undefined
-    if (!user || !userRole || !allowedRoles || !Array.isArray(allowedRoles)) {
+    if (!user || !userRole || !Array.isArray(allowedRoles)) {
         return <Navigate to="/login" />;
     }
 
