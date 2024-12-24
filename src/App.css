@@ -13,12 +13,15 @@ html {
 }
 
 body {
-    font-family: 'Roboto', sans-serif; /* Replace with your preferred font */
-    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #1b1b1b, #292929);
     color: #ffffff;
-    background-color: #333333;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    background-size: cover;
+    overflow-x: hidden;
 }
+
 
 
