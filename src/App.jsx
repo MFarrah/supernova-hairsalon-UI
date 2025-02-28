@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import {Route, Routes, Navigate} from "react-router-dom";
 import Navbar from "./components/navbar/Navbar.jsx";
@@ -23,10 +23,28 @@ import EmployeesOverviewPage from "./pages/dashboard/adminPage/employeesOverview
 import RostersOverviewPage from "./pages/dashboard/adminPage/rostersOverviewPage/RostersOverviewPage.jsx";
 import ServicesOverviewPage from "./pages/dashboard/adminPage/servicesOverviewPage/ServicesOverviewPage.jsx";
 import AdminAgendaPage from "./pages/dashboard/adminPage/adminAgendaPage/AdminAgendaPage.jsx";
+import axios from "axios";
 
 function App() {
+
+    const [error, setError] = useState('');
+
+    async function getData(){
+        try{
+            const response = await axios.post('http://localhost:8080/api/regsister', {
+                username: 'admin',
+                password: 'admin'
+            });
+            console.log(response);
+        }catch (e) {
+            console.error(e.data.message);
+            setError(e.data.message)
+        }
+    }
+
     return (
         <>
+            {error}
 
                 <Navbar/>
             <Routes>

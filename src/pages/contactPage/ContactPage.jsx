@@ -1,10 +1,16 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {LanguageContext} from "../../context/LanguageContext.jsx";
+import languageContent from "../../content/content.json";
 
 function ContactPage() {
+    const { language } = useContext(LanguageContext);
+    const { title, description } = languageContent[language].contact;
+
     return (
-        <div className="contact-page">
-            <h1>Contact Page</h1>
-        </div>
+        <>
+            <h1>{title}</h1>
+            <p>{description}</p>
+        </>
     );
 }
 

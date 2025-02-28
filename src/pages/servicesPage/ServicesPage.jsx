@@ -1,10 +1,16 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {LanguageContext} from "../../context/LanguageContext.jsx";
+import languageContent from "../../content/content.json";
 
 function ServicesPage() {
+    const { language } = useContext(LanguageContext);
+    const { title, description } = languageContent[language].service;
+
     return (
-        <div className="services-page">
-            <h1>Services Page</h1>
-        </div>
+        <>
+            <h1>{title}</h1>
+            <p>{description}</p>
+        </>
     );
 }
 

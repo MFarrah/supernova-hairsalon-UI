@@ -1,0 +1,53 @@
+{
+  "en": {
+    "navbar": {
+      "home": "Home",
+      "services": "Services",
+      "contact": "Contact"
+    },
+    "homepage": {
+      "title": "Hello World",
+      "description": "This is a simple example of a JSON file with multiple languages"
+    },
+    "service": {
+      "title": "Our Services"
+    },
+    "contact": {
+      "title": "Contact Us"
+    }
+  },
+  "es": {
+    "navbar": {
+      "home": "Inicio",
+      "services": "Servicios",
+      "contact": "Contacto"
+    },
+    "homepage": {
+      "title": "Hola Mundo",
+      "description": "Este es"
+    },
+    "service": {
+      "title": "Nuestros Servicios"
+    },
+    "contact": {
+      "title": "Contáctanos"
+    }
+  },
+  "fr": {
+    "navbar": {
+      "home": "Accueil",
+      "services": "Services",
+      "contact": "Contact"
+    },
+    "homepage": {
+      "title": "Bonjour le monde",
+      "description": "Ceci est un exemple simple d’un fichier JSON avec plusieurs langues"
+    },
+    "service": {
+      "title": "Nos Services"
+    },
+    "contact": {
+      "title": "Nous Contacter"
+    }
+  }
+}
