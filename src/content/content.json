@@ -9,43 +9,42 @@
       "title": "Hello World",
       "description": "This is a simple example of a JSON file with multiple languages"
     },
-    "service": {
-      "title": "Our Services"
-    },
-    "contact": {
-      "title": "Contact Us"
+    "loginpage": {
+      "title": "Please enter your credentials",
+      "emailTitle": "Email",
+      "passwordTitle": "Password"
     }
   },
   "es": {
     "navbar": {
       "home": "Inicio",
-      "login": "Iniciar sesión"
+      "login": "Iniciar sesión",
+      "contact": "Contacto"
     },
     "homepage": {
       "title": "Hola Mundo",
-      "description": "Este es"
+      "description": "Este es un ejemplo simple de un archivo JSON con múltiples idiomas"
     },
-    "service": {
-      "title": "Nuestros Servicios"
-    },
-    "contact": {
-      "title": "Contáctanos"
+    "loginpage": {
+      "title": "Por favor, ingrese sus credenciales",
+      "emailTitle": "Correo electrónico",
+      "passwordTitle": "Contraseña"
     }
   },
   "fr": {
     "navbar": {
       "home": "Accueil",
-      "login": "Connexion"
+      "login": "Connexion",
+      "contact": "Contact"
     },
     "homepage": {
       "title": "Bonjour le monde",
-      "description": "Ceci est un exemple simple d’un fichier JSON avec plusieurs langues"
+      "description": "Ceci est un exemple simple de fichier JSON avec plusieurs langues"
     },
-    "service": {
-      "title": "Nos Services"
-    },
-    "contact": {
-      "title": "Nous Contacter"
+    "loginpage": {
+      "title": "Veuillez entrer vos identifiants",
+      "emailTitle": "Email",
+      "passwordTitle": "Mot de passe"
     }
   }
 }
