@@ -2,7 +2,7 @@
   "en": {
     "navbar": {
       "home": "Home",
-      "services": "Services",
+      "login": "Login",
       "contact": "Contact"
     },
     "homepage": {
@@ -19,8 +19,7 @@
   "es": {
     "navbar": {
       "home": "Inicio",
-      "services": "Servicios",
-      "contact": "Contacto"
+      "login": "Iniciar sesión"
     },
     "homepage": {
       "title": "Hola Mundo",
@@ -36,8 +35,7 @@
   "fr": {
     "navbar": {
       "home": "Accueil",
-      "services": "Services",
-      "contact": "Contact"
+      "login": "Connexion"
     },
     "homepage": {
       "title": "Bonjour le monde",

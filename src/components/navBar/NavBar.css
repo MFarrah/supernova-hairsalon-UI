@@ -1,0 +1,14 @@
+
+
+.navBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navBar li {
+    margin-right: 20px;
+}
