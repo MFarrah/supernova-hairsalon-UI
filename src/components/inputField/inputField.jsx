@@ -1,12 +1,18 @@
 
 
-function InputField({ type, placeholder, value, onChange }) {
+function InputField({ inputType, inputId, inputName, placeholder, register, validationRules }) {
 
 
     return (
-        <div>
-            <input type={type} placeholder={placeholder} value={value} onChange={onChange}/>
-        </div>
+        <label htmlFor={inputId}>
+            <input
+                type={inputType}
+                name={inputName}
+                placeholder={placeholder}
+                id={inputId}
+                {...register(inputName, validationRules)}
+            />
+        </label>
     );
 }
 
