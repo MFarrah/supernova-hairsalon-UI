@@ -1,9 +1,41 @@
 {
+  "nl": {
+    "navbar": {
+      "home": "Home",
+      "login": "Log in",
+      "registration": "Registratie"
+    },
+    "homepage": {
+      "title": "Hallo Wereld",
+      "description": "Dit is een eenvoudig voorbeeld van een JSON-bestand met meerdere talen"
+    },
+    "loginpage": {
+      "title": "Voer uw gegevens in",
+      "emailTitle": "E-mail",
+      "passwordTitle": "Wachtwoord",
+      "submitButton": "Verzenden"
+    },
+    "registrationpage": {
+      "title": "Voer uw gegevens in",
+      "firstNameTitle": "Voornaam",
+      "lastNameTitle": "Achternaam",
+      "genderTitle": "Geslacht",
+      "dateOfBirthTitle": "Geboortedatum",
+      "emailTitle": "E-mail",
+      "passwordTitle": "Wachtwoord",
+      "confirmPasswordTitle": "Bevestig wachtwoord",
+      "phoneNumberTitle": "Telefoonnummer",
+      "submitButton": "Verzenden",
+      "maleTitle": "Man",
+      "femaleTitle": "Vrouw",
+      "otherTitle": "Anders"
+    }
+  },
   "en": {
     "navbar": {
       "home": "Home",
       "login": "Login",
-      "contact": "Contact"
+      "registration": "Registration"
     },
     "homepage": {
       "title": "Hello World",
@@ -12,14 +44,30 @@
     "loginpage": {
       "title": "Please enter your credentials",
       "emailTitle": "Email",
-      "passwordTitle": "Password"
+      "passwordTitle": "Password",
+      "submitButton": "Submit"
+    },
+    "registrationpage": {
+      "title": "Please enter your information",
+      "firstNameTitle": "First Name",
+      "lastNameTitle": "Last Name",
+      "genderTitle": "Gender",
+      "dateOfBirthTitle": "Date of Birth",
+      "emailTitle": "Email",
+      "passwordTitle": "Password",
+      "confirmPasswordTitle": "Confirm Password",
+      "phoneNumberTitle": "Phone Number",
+      "submitButton": "Submit",
+      "maleTitle": "Male",
+      "femaleTitle": "Female",
+      "otherTitle": "Other"
     }
   },
   "es": {
     "navbar": {
       "home": "Inicio",
       "login": "Iniciar sesión",
-      "contact": "Contacto"
+      "registration": "Registro"
     },
     "homepage": {
       "title": "Hola Mundo",
@@ -28,14 +76,30 @@
     "loginpage": {
       "title": "Por favor, ingrese sus credenciales",
       "emailTitle": "Correo electrónico",
-      "passwordTitle": "Contraseña"
+      "passwordTitle": "Contraseña",
+      "submitButton": "Enviar"
+    },
+    "registrationpage": {
+      "title": "Por favor, ingrese su información",
+      "firstNameTitle": "Nombre de pila",
+      "lastNameTitle": "Apellido",
+      "genderTitle": "Género",
+      "dateOfBirthTitle": "Fecha de nacimiento",
+      "emailTitle": "Correo electrónico",
+      "passwordTitle": "Contraseña",
+      "confirmPasswordTitle": "Confirmar contraseña",
+      "phoneNumberTitle": "Número de teléfono",
+      "submitButton": "Enviar",
+      "maleTitle": "Masculino",
+      "femaleTitle": "Femenino",
+      "otherTitle": "Otro"
     }
   },
   "fr": {
     "navbar": {
       "home": "Accueil",
       "login": "Connexion",
-      "contact": "Contact"
+      "registration": "Inscription"
     },
     "homepage": {
       "title": "Bonjour le monde",
@@ -44,7 +108,23 @@
     "loginpage": {
       "title": "Veuillez entrer vos identifiants",
       "emailTitle": "Email",
-      "passwordTitle": "Mot de passe"
+      "passwordTitle": "Mot de passe",
+      "submitButton": "Soumettre"
+    },
+    "registrationpage": {
+      "title": "Veuillez entrer vos informations",
+      "firstNameTitle": "Prénom",
+      "lastNameTitle": "Nom de famille",
+      "genderTitle": "Sexe",
+      "dateOfBirthTitle": "Date de naissance",
+      "emailTitle": "Email",
+      "passwordTitle": "Mot de passe",
+      "confirmPasswordTitle": "Confirmer le mot de passe",
+      "phoneNumberTitle": "Numéro de téléphone",
+      "submitButton": "Soumettre",
+      "maleTitle": "Masculin",
+      "femaleTitle": "Féminin",
+      "otherTitle": "Autre"
     }
   }
 }

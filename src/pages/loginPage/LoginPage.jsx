@@ -1,10 +1,11 @@
 import InputField from "../../components/inputField/inputField.jsx";
-import {useContext, useState} from "react";
+import {useContext} from "react";
 import NavBar from "../../components/navBar/NavBar.jsx";
 import {LanguageContext} from "../../context/LanguageContext.jsx";
 import languageContent from "../../content/content.json";
 import "./LoginPage.css";
 import {useForm} from "react-hook-form";
+import Button from "../../components/button/Button.jsx";
 
 
 function LoginPage() {
@@ -18,7 +19,7 @@ function LoginPage() {
 
     const {language} = useContext(LanguageContext);
 
-    const {title, emailTitle, passwordTitle} = languageContent[language].loginpage;
+    const {title, emailTitle, passwordTitle, submitButton} = languageContent[language].loginpage;
 
     const onSubmit = (data) => {
         console.log(data);
@@ -29,8 +30,8 @@ function LoginPage() {
         <>
             <NavBar/>
             <h1>{title}</h1>
-            <p>{emailTitle}</p>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form className="form-container" onSubmit={handleSubmit(onSubmit)}>
+                <p>{emailTitle}</p>
                 <InputField
                     inputType="email"
                     inputId="email"
@@ -59,7 +60,7 @@ function LoginPage() {
                 {errors.email && <p>{errors.email.message}</p>}
                 {errors.password && <p>{errors.password.message}</p>}
 
-                <button type="submit">Submit</button>
+                <Button className="btn-primary" type="submit" id="submitBtn"><p>{submitButton}</p></Button>
             </form>
         </>
     );

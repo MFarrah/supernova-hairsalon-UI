@@ -14,9 +14,10 @@ function LanguagePicker() {
     return (
         <div>
             <select value={language} onChange={selectLanguage}>
+                <option value="nl">Nederlands</option>
                 <option value="en">English</option>
-                <option value="es">Spanish</option>
-                <option value="fr">French</option>
+                <option value="es">Español</option>
+                <option value="fr">Français</option>
             </select>
         </div>
     );

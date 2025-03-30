@@ -7,7 +7,7 @@ import "./NavBar.css";
 
 function NavBar() {
     const {language } = useContext(LanguageContext);
-    const {home, login} = languageContent[language].navbar;
+    const {home, login, registration} = languageContent[language].navbar;
 
     return (
         <>
@@ -17,6 +17,9 @@ function NavBar() {
                 </li>
                 <li className="nav-bar-item">
             <Link to={'/LoginPage'}>{login}</Link>
+                </li>
+                <li className="nav-bar-item">
+                    <Link to={'/RegistrationPage'}>{registration}</Link>
                 </li>
                 <li>
                     <LanguagePicker/>

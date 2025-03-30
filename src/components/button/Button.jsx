@@ -1,7 +1,16 @@
-import ../button/Button.css
+import React from "react";
+import "./Button.css";
 
-function Button({text, onClick}) {
+function Button({ type = "button", id, children }) {
     return (
-        <button className="button" onClick={onClick}>{text}</button>
-    )
+        <button
+            type={type}
+            id={id}
+
+        >
+            {children}
+        </button>
+    );
 }
+
+export default Button;
