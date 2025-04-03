@@ -6,6 +6,7 @@ import languageContent from "../../content/content.json";
 import "./LoginPage.css";
 import {useForm} from "react-hook-form";
 import Button from "../../components/button/Button.jsx";
+import {Link} from "react-router-dom";
 
 
 function LoginPage() {
@@ -19,7 +20,7 @@ function LoginPage() {
 
     const {language} = useContext(LanguageContext);
 
-    const {title, emailTitle, passwordTitle, submitButton} = languageContent[language].loginpage;
+    const {title, emailTitle, passwordTitle, submitButton, noAccountTitle} = languageContent[language].loginpage;
 
     const onSubmit = (data) => {
         console.log(data);
@@ -61,7 +62,10 @@ function LoginPage() {
                 {errors.password && <p>{errors.password.message}</p>}
 
                 <Button className="btn-primary" type="submit" id="submitBtn"><p>{submitButton}</p></Button>
+                <Link to={"/RegistrationPage"}>{noAccountTitle}</Link>
             </form>
+
+
         </>
     );
 }

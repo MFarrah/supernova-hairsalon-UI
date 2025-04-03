@@ -4,6 +4,7 @@ import {LanguageContext} from "../../context/LanguageContext.jsx";
 import {useContext} from "react";
 import languageContent from "../../content/content.json";
 import "./NavBar.css";
+import DashboardDropdown from "../dashboardDropdown/DashboardDropdown.jsx";
 
 function NavBar() {
     const {language } = useContext(LanguageContext);
@@ -24,7 +25,10 @@ function NavBar() {
                 <li>
                     <LanguagePicker/>
                 </li>
+
             </ul>
+            <div className="sub-bar"><h4>Dashboard pages :</h4> <DashboardDropdown/></div>
+
         </>
     )
 }

@@ -1,4 +1,6 @@
-
+.sub-bar {
+    margin-bottom: 10px;
+}
 
 .nav-bar {
     display: flex;
@@ -6,6 +8,7 @@
     align-content: space-between;
     padding: 10px;
     list-style: none;
+    margin-bottom: 10px;
 }
 
 .nav-bar-item {

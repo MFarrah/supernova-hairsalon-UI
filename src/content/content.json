@@ -6,14 +6,15 @@
       "registration": "Registratie"
     },
     "homepage": {
-      "title": "Hallo Wereld",
-      "description": "Dit is een eenvoudig voorbeeld van een JSON-bestand met meerdere talen"
+      "title": "Supernova Hairsalon",
+      "description": "De gezelligste haarsalon van Amsterdam ter ere van onze geliefde Novita Doron."
     },
     "loginpage": {
       "title": "Voer uw gegevens in",
       "emailTitle": "E-mail",
       "passwordTitle": "Wachtwoord",
-      "submitButton": "Verzenden"
+      "submitButton": "Verzenden",
+      "noAccountTitle": "Klik hier als u nog geen account heeft"
     },
     "registrationpage": {
       "title": "Voer uw gegevens in",
@@ -29,6 +30,24 @@
       "maleTitle": "Man",
       "femaleTitle": "Vrouw",
       "otherTitle": "Anders"
+    },
+    "postemployeepage": {
+      "title": "Voeg een werknemer toe",
+      "firstNameTitle": "Voornaam",
+      "lastNameTitle": "Achternaam",
+      "genderTitle": "Geslacht",
+      "dateOfBirthTitle": "Geboortedatum",
+      "emailTitle": "E-mail",
+      "passwordTitle": "Wachtwoord",
+      "confirmPasswordTitle": "Bevestig wachtwoord",
+      "phoneNumberTitle": "Telefoonnummer",
+      "maleTitle": "Man",
+      "femaleTitle": "Vrouw",
+      "otherTitle": "Anders",
+      "submitButton": "Verzenden",
+      "roleTitle": "Bevoegdheid",
+      "roleEmployee": "Werknemer",
+      "roleAdmin": "Beheerder"
     }
   },
   "en": {
@@ -38,14 +57,15 @@
       "registration": "Registration"
     },
     "homepage": {
-      "title": "Hello World",
-      "description": "This is a simple example of a JSON file with multiple languages"
+      "title": "Supernova Hairsalon",
+      "description": "The coziest hair salon in Amsterdam in honor of our beloved Novita Doron."
     },
     "loginpage": {
       "title": "Please enter your credentials",
       "emailTitle": "Email",
       "passwordTitle": "Password",
-      "submitButton": "Submit"
+      "submitButton": "Submit",
+      "noAccountTitle": "Click here if you don't have an account yet"
     },
     "registrationpage": {
       "title": "Please enter your information",
@@ -61,6 +81,24 @@
       "maleTitle": "Male",
       "femaleTitle": "Female",
       "otherTitle": "Other"
+    },
+    "postemployeepage": {
+      "title": "Add an Employee",
+      "firstNameTitle": "First Name",
+      "lastNameTitle": "Last Name",
+      "genderTitle": "Gender",
+      "dateOfBirthTitle": "Date of Birth",
+      "emailTitle": "Email",
+      "passwordTitle": "Password",
+      "confirmPasswordTitle": "Confirm Password",
+      "phoneNumberTitle": "Phone Number",
+      "maleTitle": "Male",
+      "femaleTitle": "Female",
+      "otherTitle": "Other",
+      "submitButton": "Submit",
+      "roleTitle": "Role",
+      "roleEmployee": "Employee",
+      "roleAdmin": "Admin"
     }
   },
   "es": {
@@ -70,14 +108,15 @@
       "registration": "Registro"
     },
     "homepage": {
-      "title": "Hola Mundo",
-      "description": "Este es un ejemplo simple de un archivo JSON con múltiples idiomas"
+      "title": "Supernova Hairsalon",
+      "description": "El salón de peluquería más acogedor de Ámsterdam en honor a nuestra querida Novita Doron."
     },
     "loginpage": {
       "title": "Por favor, ingrese sus credenciales",
       "emailTitle": "Correo electrónico",
       "passwordTitle": "Contraseña",
-      "submitButton": "Enviar"
+      "submitButton": "Enviar",
+      "noAccountTitle": "Haga clic aquí si aún no tiene una cuenta"
     },
     "registrationpage": {
       "title": "Por favor, ingrese su información",
@@ -93,6 +132,24 @@
       "maleTitle": "Masculino",
       "femaleTitle": "Femenino",
       "otherTitle": "Otro"
+    },
+    "postemployeepage": {
+      "title": "Agregar un empleado",
+      "firstNameTitle": "Nombre de pila",
+      "lastNameTitle": "Apellido",
+      "genderTitle": "Género",
+      "dateOfBirthTitle": "Fecha de nacimiento",
+      "emailTitle": "Correo electrónico",
+      "passwordTitle": "Contraseña",
+      "confirmPasswordTitle": "Confirmar contraseña",
+      "phoneNumberTitle": "Número de teléfono",
+      "maleTitle": "Masculino",
+      "femaleTitle": "Femenino",
+      "otherTitle": "Otro",
+      "submitButton": "Enviar",
+      "roleTitle": "Rol",
+      "roleEmployee": "Empleado",
+      "roleAdmin": "Administrador"
     }
   },
   "fr": {
@@ -102,14 +159,15 @@
       "registration": "Inscription"
     },
     "homepage": {
-      "title": "Bonjour le monde",
-      "description": "Ceci est un exemple simple de fichier JSON avec plusieurs langues"
+      "title": "Supernova Hairsalon",
+      "description": "Le salon de coiffure le plus chaleureux d'Amsterdam en l'honneur de notre chère Novita Doron."
     },
     "loginpage": {
       "title": "Veuillez entrer vos identifiants",
       "emailTitle": "Email",
       "passwordTitle": "Mot de passe",
-      "submitButton": "Soumettre"
+      "submitButton": "Soumettre",
+      "noAccountTitle": "Cliquez ici si vous n'avez pas encore de compte"
     },
     "registrationpage": {
       "title": "Veuillez entrer vos informations",
@@ -125,6 +183,24 @@
       "maleTitle": "Masculin",
       "femaleTitle": "Féminin",
       "otherTitle": "Autre"
+    },
+    "postemployeepage": {
+      "title": "Ajouter un employé",
+      "firstNameTitle": "Prénom",
+      "lastNameTitle": "Nom de famille",
+      "genderTitle": "Sexe",
+      "dateOfBirthTitle": "Date de naissance",
+      "emailTitle": "Email",
+      "passwordTitle": "Mot de passe",
+      "confirmPasswordTitle": "Confirmer le mot de passe",
+      "phoneNumberTitle": "Numéro de téléphone",
+      "maleTitle": "Masculin",
+      "femaleTitle": "Féminin",
+      "otherTitle": "Autre",
+      "submitButton": "Soumettre",
+      "roleTitle": "Rôle",
+      "roleEmployee": "Employé",
+      "roleAdmin": "Administrateur"
     }
   }
 }
