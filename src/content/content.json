@@ -47,7 +47,8 @@
       "submitButton": "Verzenden",
       "roleTitle": "Bevoegdheid",
       "roleEmployee": "Werknemer",
-      "roleAdmin": "Beheerder"
+      "roleAdmin": "Beheerder",
+      "qualificationsTitle": "Kwalificaties"
     }
   },
   "en": {
@@ -98,7 +99,8 @@
       "submitButton": "Submit",
       "roleTitle": "Role",
       "roleEmployee": "Employee",
-      "roleAdmin": "Admin"
+      "roleAdmin": "Admin",
+        "qualificationsTitle": "Qualifications"
     }
   },
   "es": {
@@ -149,7 +151,8 @@
       "submitButton": "Enviar",
       "roleTitle": "Rol",
       "roleEmployee": "Empleado",
-      "roleAdmin": "Administrador"
+      "roleAdmin": "Administrador",
+        "qualificationsTitle": "Calificaciones"
     }
   },
   "fr": {
@@ -200,7 +203,8 @@
       "submitButton": "Soumettre",
       "roleTitle": "Rôle",
       "roleEmployee": "Employé",
-      "roleAdmin": "Administrateur"
+      "roleAdmin": "Administrateur",
+        "qualificationsTitle": "Qualifications"
     }
   }
 }

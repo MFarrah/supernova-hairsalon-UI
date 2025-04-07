@@ -1,12 +1,12 @@
 import {useForm} from "react-hook-form";
 import NavBar from "../../components/navBar/NavBar.jsx";
 import InputField from "../../components/inputField/inputField.jsx";
-import {useContext, useState} from "react";
+import {useContext} from "react";
 import {LanguageContext} from "../../context/LanguageContext.jsx";
 import languageContent from "../../content/content.json";
 import Button from "../../components/button/Button.jsx";
-import {qualifiedOrderIds} from "../../content/IdPlaceholderArray.jsx";
-import Select from "react-select/base";
+import '../../content/OrderPlaceholder.jsx'
+import {OrderPlaceholder} from "../../content/OrderPlaceholder.jsx";
 
 function postEmployeePage () {
     const {
@@ -33,12 +33,26 @@ function postEmployeePage () {
         otherTitle,
         roleTitle,
         roleAdmin,
-        roleEmployee
+        roleEmployee,
+        qualificationsTitle,
     } = languageContent[language].postemployeepage;
 
     const onSubmit = (data) => {
-        console.log(data);
-    }
+        const availability = (data.availability || [])
+            .filter(day => day.enabled)
+            .map(({ dayOfWeek, startTime, endTime }) => ({
+                dayOfWeek,
+                startTime,
+                endTime
+            }));
+
+        const payload = {
+            ...data,
+            availability,
+        };
+
+        console.log(payload);
+    };
 
 
     return (
@@ -146,6 +160,46 @@ function postEmployeePage () {
                         {value: "ADMIN", label: roleAdmin},
                     ]}
                 />
+<p>{qualificationsTitle}</p>
+                <InputField
+                    inputType="checkbox-group"
+                    inputName="qualifiedOrderIds"
+                    register={register}
+                    validationRules={{
+                        required: "Please select at least one qualification"
+                    }}
+                    options={OrderPlaceholder.map(order => ({
+                        value: order.id,
+                        label: order.description
+                    }))}
+                />
+                <p>Availability</p>
+                {["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"].map((day, index) => (
+                    <div key={day} className="day-availability">
+                        <label>
+                            <input
+                                type="checkbox"
+                                {...register(`availability.${index}.enabled`)}
+                            />
+                            {day}
+                        </label>
+                        <input
+                            type="hidden"
+                            value={day}
+                            {...register(`availability.${index}.dayOfWeek`)}
+                        />
+                        <input
+                            type="time"
+                            {...register(`availability.${index}.startTime`)}
+                        />
+                        <input
+                            type="time"
+                            {...register(`availability.${index}.endTime`)}
+                        />
+                    </div>
+                ))}
+
+
 
 
                 <div className="error-container">

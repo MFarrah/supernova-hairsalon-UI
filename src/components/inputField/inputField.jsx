@@ -12,6 +12,23 @@ function InputField({ inputType, inputId, inputName, placeholder, register, vali
             </select>
         );
     }
+    if (inputType === 'checkbox-group') {
+        return (
+            <div className="checkbox-group">
+                {options.map(option => (
+                    <label key={option.value} className="checkbox-option">
+                        <input
+                            type="checkbox"
+                            value={option.value}
+                            {...register(inputName, validationRules)}
+                        />
+                        {option.label}
+                    </label>
+                ))}
+            </div>
+        );
+    }
+
 
     return (
         <input
