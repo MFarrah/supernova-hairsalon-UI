@@ -48,7 +48,13 @@
       "roleTitle": "Bevoegdheid",
       "roleEmployee": "Werknemer",
       "roleAdmin": "Beheerder",
-      "qualificationsTitle": "Kwalificaties"
+      "qualificationsTitle": "Kwalificaties",
+        "availabilityTitle": "Beschikbaarheid"
+    },
+    "postorderpage": {
+      "title": "Voeg een nieuwe service toe",
+      "orderDescriptionTitle": "Beschrijving",
+      "submitButton": "Verzenden"
     }
   },
   "en": {
@@ -100,7 +106,14 @@
       "roleTitle": "Role",
       "roleEmployee": "Employee",
       "roleAdmin": "Admin",
-        "qualificationsTitle": "Qualifications"
+        "qualificationsTitle": "Qualifications",
+        "availabilityTitle": "Availability"
+    },
+    "postorderpage": {
+      "title": "Add a new service",
+      "orderDescriptionTitle": "Description",
+        "submitButton": "Submit"
+
     }
   },
   "es": {
@@ -152,7 +165,14 @@
       "roleTitle": "Rol",
       "roleEmployee": "Empleado",
       "roleAdmin": "Administrador",
-        "qualificationsTitle": "Calificaciones"
+        "qualificationsTitle": "Calificaciones",
+        "availabilityTitle": "Disponibilidad"
+    },
+    "postorderpage": {
+      "title": "Agregar un nuevo servicio",
+      "orderDescriptionTitle": "Descripción",
+        "submitButton": "Enviar"
+
     }
   },
   "fr": {
@@ -204,7 +224,14 @@
       "roleTitle": "Rôle",
       "roleEmployee": "Employé",
       "roleAdmin": "Administrateur",
-        "qualificationsTitle": "Qualifications"
+        "qualificationsTitle": "Qualifications",
+      "availabilityTitle": "Disponibilité"
+    },
+    "postorderpage": {
+      "title": "Ajouter un nouveau service",
+      "orderDescriptionTitle": "Description",
+        "submitButton": "Soumettre"
+
     }
   }
 }

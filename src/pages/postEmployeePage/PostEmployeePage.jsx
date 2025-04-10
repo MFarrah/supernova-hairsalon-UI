@@ -8,7 +8,7 @@ import Button from "../../components/button/Button.jsx";
 import '../../content/OrderPlaceholder.jsx'
 import {OrderPlaceholder} from "../../content/OrderPlaceholder.jsx";
 
-function postEmployeePage () {
+function PostEmployeePage () {
     const {
         register,
         handleSubmit,
@@ -35,6 +35,7 @@ function postEmployeePage () {
         roleAdmin,
         roleEmployee,
         qualificationsTitle,
+        availabilityTitle,
     } = languageContent[language].postemployeepage;
 
     const onSubmit = (data) => {
@@ -173,7 +174,7 @@ function postEmployeePage () {
                         label: order.description
                     }))}
                 />
-                <p>Availability</p>
+                <p>{availabilityTitle}</p>
                 {["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"].map((day, index) => (
                     <div key={day} className="day-availability">
                         <label>
@@ -222,5 +223,5 @@ function postEmployeePage () {
 
 }
 
-export default postEmployeePage;
+export default PostEmployeePage;
 

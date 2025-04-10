@@ -4,7 +4,9 @@ function DashboardDropdown() {
     const navigate = useNavigate();
 
     const navigateToPage = (page) => {
-        navigate(`/${page}`);
+        if (page && page !== "/") {
+            navigate(`/${page}`);
+        }
     };
 
     return (
@@ -12,6 +14,7 @@ function DashboardDropdown() {
             <select onChange={(e) => navigateToPage(e.target.value)}>
                 <option value="/" >please select a page</option>
                 <option value="PostEmployeePage">Post Employee (Admin)</option>
+                <option value="PostOrderPage">Post Order (Admin)</option>
             </select>
         </>
     );
