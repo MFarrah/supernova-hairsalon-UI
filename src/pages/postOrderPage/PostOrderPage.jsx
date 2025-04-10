@@ -20,6 +20,8 @@ function PostOrderPage () {
     const {
         title,
         orderDescriptionTitle,
+        orderPriceTitle,
+        orderDurationTitle,
         submitButton,
     } = languageContent[language].postorderpage;
 
@@ -44,7 +46,44 @@ function PostOrderPage () {
                     validationRules={{required: "Description is required"}}
                 />
 
+<p>{orderPriceTitle}</p>
+                <InputField
+                    inputType="number"
+                    inputId="price"
+                    inputName="price"
+                    placeholder={orderPriceTitle}
+                    step="0.01"
+                    register={register}
+                    validationRules={{
+                        required: "Price is required",
+                        min: {
+                            value: 0,
+                            message: "Price must be a positive number"
+                        }
+                    }}
+                />
+
+
+                <p>{orderDurationTitle}</p>
+                <InputField
+                    inputType="number"
+                    inputId="duration"
+                    inputName="duration"
+                    placeholder={orderDurationTitle}
+                    register={register}
+                    validationRules={{
+                        required: "Duration is required",
+                        min: {
+                            value: 15,
+                            message: "Duration must be at least 15 minutes"
+                        }
+                    }}
+                />
+
+
                 {errors.orderDescriptionTitle && <p className="error-message">{errors.orderDescriptionTitle.message}</p>}
+                {errors.orderPriceTitle && <p className="error-message">{errors.orderPriceTitle.message}</p>}
+                {errors.orderDurationTitle && (<p className="error-message">{errors.orderDurationTitle.message}</p>)}
 
                 <Button className="btn-primary" type="submit" id="submitBtn"><p>{submitButton}</p></Button>
             </form>

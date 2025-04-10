@@ -54,7 +54,9 @@
     "postorderpage": {
       "title": "Voeg een nieuwe service toe",
       "orderDescriptionTitle": "Beschrijving",
-      "submitButton": "Verzenden"
+      "submitButton": "Verzenden",
+        "orderPriceTitle": "Prijs in EUR",
+        "orderDurationTitle": "Duur in minuten"
     }
   },
   "en": {
@@ -112,7 +114,9 @@
     "postorderpage": {
       "title": "Add a new service",
       "orderDescriptionTitle": "Description",
-        "submitButton": "Submit"
+        "submitButton": "Submit",
+        "orderPriceTitle": "Price in EUR",
+        "orderDurationTitle": "Duration in minutes"
 
     }
   },
@@ -171,7 +175,9 @@
     "postorderpage": {
       "title": "Agregar un nuevo servicio",
       "orderDescriptionTitle": "Descripción",
-        "submitButton": "Enviar"
+        "submitButton": "Enviar",
+        "orderPriceTitle": "Precio en EUR",
+        "orderDurationTitle": "Duración en minutos"
 
     }
   },
@@ -230,7 +236,9 @@
     "postorderpage": {
       "title": "Ajouter un nouveau service",
       "orderDescriptionTitle": "Description",
-        "submitButton": "Soumettre"
+        "submitButton": "Soumettre",
+        "orderPriceTitle": "Prix en EUR",
+        "orderDurationTitle": "Durée en minutes"
 
     }
   }
