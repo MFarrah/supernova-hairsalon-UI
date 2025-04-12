@@ -1,4 +1,5 @@
 import {createContext, useState} from "react";
+import jwt_decode from 'jwt_decode'
 
 
 export const LanguageContext = createContext({});
@@ -7,10 +8,12 @@ function LanguageProvider({children}) {
 const storedLanguage = localStorage.getItem('language');
 const [language, setLanguage] = useState(storedLanguage || 'nl');
 
+
 function setLanguageAndStore(language) {
     setLanguage(language);
     localStorage.setItem('language', language);
 }
+
 
 const data = {
     language,

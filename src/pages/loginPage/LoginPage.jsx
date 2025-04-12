@@ -7,10 +7,12 @@ import "./LoginPage.css";
 import {useForm} from "react-hook-form";
 import Button from "../../components/button/Button.jsx";
 import {Link} from "react-router-dom";
+import axios from "axios";
 
 
 function LoginPage() {
 
+const { login } = useContext(LanguageContext);
 
     const {
         register,
@@ -22,8 +24,19 @@ function LoginPage() {
 
     const {title, emailTitle, passwordTitle, submitButton, noAccountTitle} = languageContent[language].loginpage;
 
-    const onSubmit = (data) => {
-        console.log(data);
+    async function loginData(data){
+        console.log(data)
+        try{
+            const result = await axios.post('http://localhost:8080/api/auth/login',{
+                email: data.email,
+                password: data.password,
+            })
+            console.log(result)
+            login(result.data)
+
+        }catch (e) {
+            console.error(e);
+        }
     }
 
 
@@ -31,7 +44,7 @@ function LoginPage() {
         <>
             <NavBar/>
             <h1>{title}</h1>
-            <form className="form-container" onSubmit={handleSubmit(onSubmit)}>
+            <form className="form-container" onSubmit={handleSubmit(loginData)}>
                 <p>{emailTitle}</p>
                 <InputField
                     inputType="email"

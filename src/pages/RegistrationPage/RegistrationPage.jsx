@@ -6,6 +6,7 @@ import {LanguageContext} from "../../context/LanguageContext.jsx";
 import {useContext} from "react";
 import languageContent from "../../content/content.json";
 import "./RegistrationPage.css"
+import axios from "axios";
 
 
 function RegistrationPage() {
@@ -33,16 +34,26 @@ function RegistrationPage() {
         otherTitle
     } = languageContent[language].registrationpage;
 
-    const onSubmit = (data) => {
-        console.log(data);
-    }
+    async function registerData(data){
+        console.log(data)
+        try{
+            const result = await axios.post('http://localhost:8080/api/auth/register',{
+                email: data.email,
+                password: data.password,
+                confirmPassword: data.confirmPassword,
+            })
+            console.log(result)
 
+        }catch (e) {
+            console.error(e);
+        }
+    }
 
     return (
         <>
             <NavBar/>
             <h1>{title}</h1>
-            <form className="form-container" onSubmit={handleSubmit(onSubmit)}>
+            <form className="form-container" onSubmit={handleSubmit(registerData)}>
                 <p>{emailTitle}</p>
                 <InputField
                     inputType="email"
