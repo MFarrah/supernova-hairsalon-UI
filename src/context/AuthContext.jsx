@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
 import {useNavigate} from "react-router-dom";
+import {createContext, useState} from "react";
 
 export const Authcontext = createContext (null);
 
@@ -12,7 +12,7 @@ function AuthContextProvider({children}) {
 
 const login = () => {
     setAuth({
-     ..auth,
+     ...Auth,
         isAuth: true,
         user: {
          email:"",
@@ -27,7 +27,7 @@ const login = () => {
 
 const logout = () => {
     setAuth({
-        ..auth,
+        ...Auth,
         isAuth: false,
         user: null
     }),
