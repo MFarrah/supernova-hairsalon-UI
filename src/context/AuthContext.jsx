@@ -1,33 +1,48 @@
 import {useNavigate} from "react-router-dom";
 import {createContext, useState} from "react";
+import {jwtDecode} from "jwt-decode";
+import axios from "axios";
 
-export const Authcontext = createContext (null);
+export const AuthContext = createContext (null);
 
 function AuthContextProvider({children}) {
-    const [Auth, setAuth] = useState({
+    const [auth, setAuth] = useState({
         isAuth: false,
         user:null
     });
     const navigate = useNavigate();
 
-const login = () => {
-    setAuth({
-     ...Auth,
-        isAuth: true,
-        user: {
-         email:"",
-            id:"",
-            role:"",
-        }
-    }),
-        console.log("User is logged in"),
-        navigate("/dashboard")
+const login = async (jwtToken) => {
+    console.log(jwtDecode(jwtToken));
+    const decodedToken = jwtDecode(jwtToken);
+    localStorage.setItem("token", jwtToken);
+    try{
+        const response = await axios.get(`http://localhost:8080/api/customers/${decodedToken.sub}`, {
+            headers: {
+                Authorization: `Bearer ${jwtToken}`
+            }
+        })
+        setAuth({
+            ...auth,
+            isAuth: true,
+            user: {
+                email: response.data.email,
+                id: response.data.id,
+                role: response.data.role,
+            }
+        }),
+            console.log("authcontext  : User is logged in"),
+            navigate("/DashboardPage")
+    } catch (e) {
+        console.error(e);
+    }
+
 
     }
 
 const logout = () => {
     setAuth({
-        ...Auth,
+        ...auth,
         isAuth: false,
         user: null
     }),
@@ -36,14 +51,15 @@ const logout = () => {
 }
 
     const data = {
-    isAuth: Auth.isAuth,
+    isAuth: auth.isAuth,
+        user: auth.user,
         login,
         logout,
     }
     return (
-        <Authcontext.Provider value={data}>
+        <AuthContext.Provider value={data}>
             {children}
-        </Authcontext.Provider>
+        </AuthContext.Provider>
     )
 }
 

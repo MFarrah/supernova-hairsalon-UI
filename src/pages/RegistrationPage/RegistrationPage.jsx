@@ -34,7 +34,7 @@ function RegistrationPage() {
         otherTitle
     } = languageContent[language].registrationpage;
 
-    async function registerData(data){
+    async function handleRegister(data){
         console.log(data)
         try{
             const result = await axios.post('http://localhost:8080/api/auth/register',{
@@ -42,18 +42,23 @@ function RegistrationPage() {
                 password: data.password,
                 confirmPassword: data.confirmPassword,
             })
+            if (result.status === 200){
+                console.log("Registration successful")
+            }
             console.log(result)
 
         }catch (e) {
             console.error(e);
+            console.log(e.response.data)
         }
+
     }
 
     return (
         <>
             <NavBar/>
             <h1>{title}</h1>
-            <form className="form-container" onSubmit={handleSubmit(registerData)}>
+            <form className="form-container" onSubmit={handleSubmit(handleRegister)}>
                 <p>{emailTitle}</p>
                 <InputField
                     inputType="email"
