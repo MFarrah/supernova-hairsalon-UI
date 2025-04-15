@@ -22,14 +22,14 @@ function NavBar() {
                     {isAuth ? <Link to={'/LoginPage'}><p onClick={logout}>Logout</p></Link> : <Link to={'/LoginPage'}>{login}</Link>}
                 </li>
                 <li className="nav-bar-item">
-                    {!isAuth ? <Link to={'/RegistrationPage'}>{registration}</Link> : ""}
+                    {!isAuth ? <Link to={'/RegistrationPage'}>{registration}</Link> : <Link to={'/DashboardPage'}>Dashboard</Link>}
                 </li>
                 <li>
                     <LanguagePicker/>
                 </li>
 
             </ul>
-            <div className="sub-bar"><h4>Dashboard pages :</h4> <DashboardDropdown/></div>
+            {isAuth && <div className="sub-bar"><><h4>Dashboard pages :</h4><DashboardDropdown/></></div>}
 
         </>
     )
