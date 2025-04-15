@@ -5,8 +5,10 @@ import {useContext} from "react";
 import languageContent from "../../content/content.json";
 import "./NavBar.css";
 import DashboardDropdown from "../dashboardDropdown/DashboardDropdown.jsx";
+import {AuthContext} from "../../context/AuthContext.jsx";
 
 function NavBar() {
+    const {isAuth, logout} = useContext(AuthContext);
     const {language } = useContext(LanguageContext);
     const {home, login, registration} = languageContent[language].navbar;
 
@@ -17,10 +19,10 @@ function NavBar() {
             <Link to={'/'}>{home}</Link>
                 </li>
                 <li className="nav-bar-item">
-            <Link to={'/LoginPage'}>{login}</Link>
+                    {isAuth ? <Link to={'/LoginPage'}><p onClick={logout}>Logout</p></Link> : <Link to={'/LoginPage'}>{login}</Link>}
                 </li>
                 <li className="nav-bar-item">
-                    <Link to={'/RegistrationPage'}>{registration}</Link>
+                    {!isAuth ? <Link to={'/RegistrationPage'}>{registration}</Link> : ""}
                 </li>
                 <li>
                     <LanguagePicker/>
