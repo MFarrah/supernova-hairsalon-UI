@@ -1,5 +1,6 @@
 import InputField from "../../components/inputField/inputField.jsx";
 import {useContext} from "react";
+import {useNavigate} from "react-router-dom";
 import NavBar from "../../components/navBar/NavBar.jsx";
 import {LanguageContext} from "../../context/LanguageContext.jsx";
 import languageContent from "../../content/content.json";
@@ -23,7 +24,7 @@ const { login } = useContext(AuthContext);
     } = useForm();
 
     const {language} = useContext(LanguageContext);
-
+    const navigate = useNavigate();
     const {title, emailTitle, passwordTitle, submitButton, noAccountTitle} = languageContent[language].loginpage;
 
 
@@ -35,7 +36,9 @@ const handleLogin = async (data) => {
             password: data.password,
          })
         login(response.data.token);
-        console.log("loginpage : Login successful", response.data)
+        console.log("loginpage : Login successful"),
+        navigate("/DashboardPage");
+
     }catch (e) {
         console.error(e);
         console.log(e.response.data)

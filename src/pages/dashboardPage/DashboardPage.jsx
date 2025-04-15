@@ -6,6 +6,9 @@ import NavBar from "../../components/navBar/NavBar.jsx";
 function DashboardPage() {
     const { user } = useContext(AuthContext);
 
+    if (!user) {
+        return <p>Gebruikersgegevens worden geladen...</p>; // of een spinner
+    }
     return (
         <>
             <NavBar/>
