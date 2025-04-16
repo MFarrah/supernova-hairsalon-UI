@@ -5,6 +5,7 @@ import { LanguageContext } from "../../context/LanguageContext.jsx";
 function LanguagePicker() {
     const { language, setLanguage } = useContext(LanguageContext);
 
+
     const selectLanguage = (e) => {
         const selectedLanguage = e.target.value;
         setLanguage(selectedLanguage);

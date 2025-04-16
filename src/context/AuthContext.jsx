@@ -37,6 +37,8 @@ function AuthContextProvider({ children }) {
                 isAuth: true,
                 user: {
                     email: userData.email,
+                    firstName: userData.firstName,
+                    lastName: userData.lastName,
                     id: userData.id,
                     role: userData.role,
                 },
