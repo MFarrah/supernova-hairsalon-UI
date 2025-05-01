@@ -67,6 +67,7 @@ function AuthContextProvider({ children }) {
     const data = {
         isAuth: auth.isAuth,
         user: auth.user,
+        token: localStorage.getItem("token"),
         login,
         logout,
     };
