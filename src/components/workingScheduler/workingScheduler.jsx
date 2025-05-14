@@ -30,13 +30,12 @@ function WorkingScheduler({ schedule }) {
 
     return (
         <div className="working-scheduler">
-            <p className="working-scheduler__title">Werkrooster:</p>
             <table className="working-scheduler__table">
                 <thead>
                 <tr>
-                    <th>Dag</th>
-                    <th>Van</th>
-                    <th>Tot</th>
+                    <th>Day</th>
+                    <th>From</th>
+                    <th>Till</th>
                 </tr>
                 </thead>
                 <tbody>

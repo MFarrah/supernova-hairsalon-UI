@@ -57,6 +57,18 @@
       "submitButton": "Verzenden",
         "orderPriceTitle": "Prijs in EUR",
         "orderDurationTitle": "Duur in minuten"
+    },
+    "dashboardpage": {
+        "title": "Dashboard",
+        "employeeTitle": "Werknemer",
+        "orderTitle": "Bestelling",
+        "customerTitle": "Klant",
+        "dateTitle": "Datum",
+        "timeTitle": "Tijd",
+        "statusTitle": "Status",
+        "actionsTitle": "Acties",
+        "addEmployeeButton": "Voeg werknemer toe",
+        "addOrderButton": "Voeg bestelling toe"
     }
   },
   "en": {
