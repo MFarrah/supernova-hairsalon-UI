@@ -93,6 +93,14 @@ function DashboardPage() {
 
             {user.role.includes("ROLE_ADMIN") ? (
                 <div>
+                    <p><ul>
+                        <li>Weekoverzicht van boekingen</li>
+                        <li>Medewerkers die aan het werk zijn</li>
+                        <li>Medewerkers met roosters</li>
+                        <li>Bekijk en beheer roosters</li>
+                        <li>Bekijk en beheer tijdslots</li>
+                        <li>Bekijk en beheer afspraken</li>
+                    </ul></p>
                     <h2>Medewerkers</h2>
                     {loading && <p>Medewerkers laden...</p>}
                     {error && <p style={{color: "red"}}>{error}</p>}
@@ -120,6 +128,14 @@ function DashboardPage() {
                 </div>
             ) : user.role.includes("ROLE_EMPLOYEE") ? (
                 <div>
+                    <p>
+                        <ul>
+                            <li>Bekijk je rooster</li>
+                            <li>Bekijk klanten</li>
+                            <li>Bekijk je afspraken</li>
+                            <li>Plan afspraak</li>
+                        </ul>
+                    </p>
                     <label>
                         Selecteer medewerker:
                         <select value={selectedEmployeeId} onChange={(e) => setSelectedEmployeeId(e.target.value)}>
@@ -177,6 +193,13 @@ function DashboardPage() {
                     </div>
                 </div>
             ) : user.role.includes("ROLE_CUSTOMER") ? (
+                <p>
+                    <ul>
+                        <li>Bekijk je afspraken</li>
+                        <li>Plan afspraak</li>
+                        <li>Bekijk medewerkers</li>
+                    </ul>
+                </p>
                 <p>Welcome, Customer! Manage your appointments and profile here.</p>
             ) : (
                 <p>Access denied. You do not have permission to view this content.</p>
