@@ -193,6 +193,7 @@ function DashboardPage() {
                     </div>
                 </div>
             ) : user.role.includes("ROLE_CUSTOMER") ? (
+                <>
                 <p>
                     <ul>
                         <li>Bekijk je afspraken</li>
@@ -201,6 +202,7 @@ function DashboardPage() {
                     </ul>
                 </p>
                 <p>Welcome, Customer! Manage your appointments and profile here.</p>
+                </>
             ) : (
                 <p>Access denied. You do not have permission to view this content.</p>
             )}
