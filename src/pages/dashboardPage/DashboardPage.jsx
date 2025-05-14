@@ -1,23 +1,21 @@
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../context/AuthContext.jsx";
+import {useContext, useEffect, useState} from "react";
+import {AuthContext} from "../../context/AuthContext.jsx";
 import NavBar from "../../components/navBar/NavBar.jsx";
 import TimeBasedGreeting from "../../helpers/TimeBasedGreeting.jsx";
 import axios from "axios";
 import WorkingScheduler from "../../components/workingScheduler/workingScheduler.jsx";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import languageContext from "../../context/LanguageContext.jsx";
-import languageContent from "../../content/content.json";
+
 
 function DashboardPage() {
-    const { isAuth, user, token } = useContext(AuthContext);
+    const {isAuth, user, token} = useContext(AuthContext);
     const [employees, setEmployees] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [selectedEmployeeId, setSelectedEmployeeId] = useState("");
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [rosterItems, setRosterItems] = useState([]);
- /*   const {}  = languageContent[language].dashboardpage;*/
 
     useEffect(() => {
         const controller = new AbortController();
@@ -74,7 +72,7 @@ function DashboardPage() {
                     Authorization: `Bearer ${token}`,
                 },
             });
-console.log(response);
+            console.log(response);
             setRosterItems(response.data);
         } catch (error) {
             console.error("Fout bij ophalen roosters:", error);
@@ -86,102 +84,109 @@ console.log(response);
 
     return (
         <>
-            <NavBar />
-            <h1>Dashboard</h1>
-            <p>
-                {TimeBasedGreeting()} {isAuth ? (user.firstName ?? user.email) : null}, welkom op je dashboard!
-            </p>
+        <NavBar/>
+        <h1>Dashboard</h1>
+        <p>
+            {TimeBasedGreeting()} {isAuth ? (user.firstName ?? user.email) : null}, welkom op je dashboard!
+        </p>
 
 
+            {user.role.includes("ROLE_ADMIN") ? (
+                <div>
+                    <h2>Medewerkers</h2>
+                    {loading && <p>Medewerkers laden...</p>}
+                    {error && <p style={{color: "red"}}>{error}</p>}
+                    {!loading && !error && employees.length > 0 && (
+                        <ul>
+                            {employees.map((employee) => (
+                                <li key={employee.id}>
+                                    <p><strong>Naam:</strong> {employee.firstName} {employee.lastName}</p>
+                                    <p><strong>Email:</strong> {employee.email}</p>
+                                    <p><strong>Geboortedatum:</strong> {employee.dateOfBirth}</p>
+                                    <p><strong>Telefoon:</strong> {employee.phoneNumber}</p>
+                                    <p><strong>Geslacht:</strong> {employee.gender}</p>
+                                    <p><strong>Orders:</strong></p>
+                                    <ul>
+                                        {employee.qualifiedOrderIds?.map((orderId, index) => (
+                                            <li key={index}>{orderId}</li>
+                                        ))}
+                                    </ul>
+                                    <p><strong>Werkrooster:</strong></p>
+                                    <WorkingScheduler schedule={employee.workingSchedule} />
+                                </li>
+                            ))}
+                        </ul>
+                    )}
+                </div>
+            ) : user.role.includes("ROLE_EMPLOYEE") ? (
+                <div>
+                    <label>
+                        Selecteer medewerker:
+                        <select value={selectedEmployeeId} onChange={(e) => setSelectedEmployeeId(e.target.value)}>
+                            <option value="">-- Kies medewerker --</option>
+                            {employees.map((employee) => (
+                                <option key={employee.id} value={employee.id}>
+                                    {employee.firstName} {employee.lastName}
+                                </option>
+                            ))}
+                        </select>
+                    </label>
 
-            <h2>Medewerkers</h2>
+                    <label style={{marginLeft: "20px"}}>
+                        Kies datum:
+                        <DatePicker
+                            selected={selectedDate}
+                            onChange={(date) => setSelectedDate(date)}
+                            dateFormat="yyyy-MM-dd"
+                        />
+                    </label>
 
-            {loading && <p>Medewerkers laden...</p>}
-            {error && <p style={{ color: "red" }}>{error}</p>}
+                    <p style={{marginTop: "10px"}}>
+                        Gekozen jaar: <strong>{selectedDate.getFullYear()}</strong> |
+                        Weeknummer: <strong>{getISOWeekNumber(selectedDate)}</strong>
+                    </p>
 
-            {!loading && !error && employees.length > 0 && (
-                <ul>
-                    {employees.map((employee) => (
-                        <li key={employee.id}>
-                            <p><strong>Naam:</strong> {employee.firstName} {employee.lastName}</p>
-                            <p><strong>Email:</strong> {employee.email}</p>
-                            <p><strong>Geboortedatum:</strong> {employee.dateOfBirth}</p>
-                            <p><strong>Telefoon:</strong> {employee.phoneNumber}</p>
-                            <p><strong>Geslacht:</strong> {employee.gender}</p>
-                            <p><strong>Orders:</strong></p>
-                            <ul>
-                                {employee.qualifiedOrderIds?.map((orderId, index) => (
-                                    <li key={index}>{orderId}</li>
-                                ))}
-                            </ul>
-                            <p><strong>Werkrooster:</strong></p>
-                            <WorkingScheduler schedule={employee.workingSchedule} />
-                        </li>
-                    ))}
-                </ul>
+                    <button onClick={handleFetchRosters} style={{marginTop: "10px"}}>
+                        Ophalen rooster
+                    </button>
+
+                    <div>
+                        <h2>Werkrooster Tijdslots</h2>
+                        {rosterItems.length > 0 ? (
+                            Object.entries(
+                                rosterItems.reduce((acc, slot) => {
+                                    if (!acc[slot.date]) acc[slot.date] = [];
+                                    acc[slot.date].push(slot);
+                                    return acc;
+                                }, {})
+                            ).map(([date, slots]) => (
+                                <div key={date}>
+                                    <h3>{date}</h3>
+                                    <ul>
+                                        {slots.map((slot) => (
+                                            <li key={slot.timeSlotId}>
+                                                {slot.startTime.slice(0, 5)} - {slot.endTime.slice(0, 5)} | {slot.status}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            ))
+                        ) : (
+                            <p>Geen tijdslots beschikbaar voor deze selectie.</p>
+                        )}
+                    </div>
+                </div>
+            ) : user.role.includes("ROLE_CUSTOMER") ? (
+                <p>Welcome, Customer! Manage your appointments and profile here.</p>
+            ) : (
+                <p>Access denied. You do not have permission to view this content.</p>
             )}
-            <div>
-                <label>
-                    Selecteer medewerker:
-                    <select value={selectedEmployeeId} onChange={(e) => setSelectedEmployeeId(e.target.value)}>
-                        <option value="">-- Kies medewerker --</option>
-                        {employees.map((employee) => (
-                            <option key={employee.id} value={employee.id}>
-                                {employee.firstName} {employee.lastName}
-                            </option>
-                        ))}
-                    </select>
-                </label>
 
-                <label style={{ marginLeft: "20px" }}>
-                    Kies datum:
-                    <DatePicker
-                        selected={selectedDate}
-                        onChange={(date) => setSelectedDate(date)}
-                        dateFormat="yyyy-MM-dd"
-                    />
-                </label>
 
-                {/* ✅ Visuele duidelijkheid: wat wordt doorgestuurd */}
-                <p style={{ marginTop: "10px" }}>
-                    Gekozen jaar: <strong>{selectedDate.getFullYear()}</strong> | Weeknummer: <strong>{getISOWeekNumber(selectedDate)}</strong>
-                </p>
 
-                <button onClick={handleFetchRosters} style={{ marginTop: "10px" }}>
-                    Ophalen rooster
-                </button>
-            </div>
-            {!loading && !error && employees.length === 0 && (
-                <p>Geen medewerkers gevonden.</p>
-            )}
-
-            <div>
-                <h2>Werkrooster Tijdslots</h2>
-                {rosterItems.length > 0 ? (
-                    Object.entries(
-                        rosterItems.reduce((acc, slot) => {
-                            if (!acc[slot.date]) acc[slot.date] = [];
-                            acc[slot.date].push(slot);
-                            return acc;
-                        }, {})
-                    ).map(([date, slots]) => (
-                        <div key={date}>
-                            <h3>{date}</h3>
-                            <ul>
-                                {slots.map((slot) => (
-                                    <li key={slot.timeSlotId}>
-                                        {slot.startTime.slice(0, 5)} - {slot.endTime.slice(0, 5)} | {slot.status}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    ))
-                ) : (
-                    <p>Geen tijdslots beschikbaar voor deze selectie.</p>
-                )}
-            </div>
-        </>
-    );
+</>
+)
+    ;
 }
 
 export default DashboardPage;
