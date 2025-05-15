@@ -15,6 +15,7 @@ function DashboardPage() {
     const [selectedEmployeeId, setSelectedEmployeeId] = useState("");
 
 
+
     useEffect(() => {
         const controller = new AbortController();
 
@@ -75,7 +76,7 @@ function DashboardPage() {
 
                                 <option value="">-- Kies medewerker --</option>
                                     {employees.map((employee) => (
-                                        <option key={employee.id} value={employee.employeeId}>
+                                        <option key={employee.employeeId} value={employee.employeeId}>
                                             {employee.firstName} {employee.lastName}
                                         </option>
 
