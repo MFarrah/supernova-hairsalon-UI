@@ -1,28 +1,24 @@
 .working-scheduler {
-    margin-top: 1rem;
-    font-family: Arial, sans-serif;
-}
-
-.working-scheduler__title {
-    font-weight: bold;
-    margin-bottom: 0.5rem;
+    margin-top: 4px;
+    font-size: 10px;
+    font-family: sans-serif;
 }
 
 .working-scheduler__table {
-    width: 100%;
+    width: auto;
     border-collapse: collapse;
-    font-size: 0.9rem;
-    border: 1px solid #6e6b6b;
-    background-color: rgba(231, 225, 225, 0.39);
-}
-
-.working-scheduler__table thead {
-    background-color: #1e1e1e;
+    font-size: inherit;
+    background-color: transparent;
+    border: none;
 }
 
 .working-scheduler__table th,
 .working-scheduler__table td {
-    padding: 8px;
+    padding: 2px 4px;
     text-align: left;
-    border-bottom: 1px solid #222222;
+    border: none;
+}
+
+.working-scheduler__table thead {
+    display: none; /* verberg kop als je nog compacter wil */
 }
