@@ -6,18 +6,39 @@ import axios from "axios";
 import "react-datepicker/dist/react-datepicker.css";
 import ProfileImageUploader from "../../components/ProfileImageUploader/ProfileImageUploader.jsx";
 import EmployeeTileList from "../../components/employeeTileList/EmployeeTileList.jsx";
+import CustomerTileList from "../../components/employeeTileList/CustomerTileList.jsx";
 
 function DashboardPage() {
     const {isAuth, user, token} = useContext(AuthContext);
     const [employees, setEmployees] = useState([]);
+    const [customers, setCustomers] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [selectedEmployeeId, setSelectedEmployeeId] = useState("");
 
+    useEffect(() => {
+        const fetchCustomers = async () => {
+            try {
+                const response = await axios.get("http://localhost:8080/api/customers/all", {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    },
+                });
+                setCustomers(response.data);
+            } catch (err) {
+                setError("Fout bij het laden van klanten.");
+                console.error(err);
+            } finally {
+                setLoading(false);
+            }
+        };
 
+        fetchCustomers();
+    }, []);
 
     useEffect(() => {
         const controller = new AbortController();
+
 
         async function fetchEmployees() {
             try {
@@ -44,6 +65,8 @@ function DashboardPage() {
 
         return () => controller.abort();
     }, [token]);
+
+
 
 
     if (!user) return <p>Gebruikersgegevens worden geladen...</p>;
@@ -95,6 +118,16 @@ function DashboardPage() {
                     {!loading && !error && employees.length > 0 && (
                         <EmployeeTileList employees={employees} />
                     )}
+
+                    {employees.length === 0 && <p>Geen medewerkers gevonden.</p>}
+                    <h2>Klanten</h2>
+                    {loading && <p>Klanten laden...</p>}
+                    {error && <p style={{ color: "red" }}>{error}</p>}
+                    {!loading && !error && customers.length > 0 && (
+                        <CustomerTileList customers={customers} />
+                    )}
+                    {!loading && !error && customers.length === 0 && <p>Geen klanten gevonden.</p>}
+
 
 
                 </div>

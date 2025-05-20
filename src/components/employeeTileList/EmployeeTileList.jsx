@@ -64,7 +64,7 @@ function EmployeeTileList({ employees }) {
                             <ul>
                                 {ordersByEmployee[employee.employeeId].map((order) => (
                                     <li key={order.id}>
-                                        <strong>{order.description}</strong> – €{order.price} – {order.duration} min
+                                        <strong>{order.description}</strong>
                                     </li>
                                 ))}
                             </ul>
