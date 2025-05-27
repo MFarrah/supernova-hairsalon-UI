@@ -1,22 +1,24 @@
-import {useForm} from "react-hook-form";
+import { useForm } from "react-hook-form";
 import NavBar from "../../components/navBar/NavBar.jsx";
 import InputField from "../../components/inputField/inputField.jsx";
-import {useContext} from "react";
-import {LanguageContext} from "../../context/LanguageContext.jsx";
+import { useContext } from "react";
+import { LanguageContext } from "../../context/LanguageContext.jsx";
+import { AuthContext } from "../../context/AuthContext.jsx";
 import languageContent from "../../content/content.json";
 import Button from "../../components/button/Button.jsx";
-import '../../content/OrderPlaceholder.jsx'
-import {OrderPlaceholder} from "../../content/OrderPlaceholder.jsx";
+import '../../content/OrderPlaceholder.jsx';
+import { OrderPlaceholder } from "../../content/OrderPlaceholder.jsx";
 
 function PostEmployeePage () {
     const {
         register,
         handleSubmit,
-        formState: {errors},
+        formState: { errors },
     } = useForm();
 
+    const { language } = useContext(LanguageContext);
+    const { token } = useContext(AuthContext);
 
-    const {language} = useContext(LanguageContext);
     const {
         title,
         firstNameTitle,
@@ -38,8 +40,19 @@ function PostEmployeePage () {
         availabilityTitle,
     } = languageContent[language].postemployeepage;
 
-    const onSubmit = (data) => {
-        const availability = (data.availability || [])
+    const onSubmit = async (data) => {
+        if (data.password !== data.confirmPassword) {
+            alert("Wachtwoorden komen niet overeen.");
+            return;
+        }
+
+        const {
+            availability,
+            qualifiedOrderIds,
+            ...rest
+        } = data;
+
+        const workingSchedule = (availability || [])
             .filter(day => day.enabled)
             .map(({ dayOfWeek, startTime, endTime }) => ({
                 dayOfWeek,
@@ -47,18 +60,40 @@ function PostEmployeePage () {
                 endTime
             }));
 
+        const formattedOrderIds = qualifiedOrderIds?.map(id => Number(id)) || [];
+
         const payload = {
-            ...data,
-            availability,
+            ...rest,
+            qualifiedOrderIds: formattedOrderIds,
+            workingSchedule,
         };
 
-        console.log(payload);
-    };
+        console.log("Payload being sent:", JSON.stringify(payload, null, 2));
 
+        try {
+            const response = await fetch("http://localhost:8080/api/employees/post", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
+                },
+                body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const result = await response.json();
+            console.log("Employee successfully posted:", result);
+        } catch (error) {
+            console.error("Error posting employee:", error);
+        }
+    };
 
     return (
         <>
-            <NavBar/>
+            <NavBar />
             <h1>{title}</h1>
             <form className="form-container" onSubmit={handleSubmit(onSubmit)}>
                 <p>{emailTitle}</p>
@@ -68,8 +103,9 @@ function PostEmployeePage () {
                     inputName="email"
                     placeholder={emailTitle}
                     register={register}
-                    validationRules={{required: "Email is required"}}
+                    validationRules={{ required: "Email is required" }}
                 />
+
                 <p>{passwordTitle}</p>
                 <InputField
                     inputType="password"
@@ -85,6 +121,7 @@ function PostEmployeePage () {
                         }
                     }}
                 />
+
                 <p>{confirmPasswordTitle}</p>
                 <InputField
                     inputType="password"
@@ -93,13 +130,14 @@ function PostEmployeePage () {
                     placeholder={confirmPasswordTitle}
                     register={register}
                     validationRules={{
-                        required: "Password is required",
+                        required: "Confirm password is required",
                         minLength: {
                             value: 4,
                             message: "Password must have at least 4 characters"
                         }
                     }}
                 />
+
                 <p>{firstNameTitle}</p>
                 <InputField
                     inputType="text"
@@ -107,8 +145,9 @@ function PostEmployeePage () {
                     inputName="firstName"
                     placeholder={firstNameTitle}
                     register={register}
-                    validationRules={{required: "First Name is required"}}
+                    validationRules={{ required: "First Name is required" }}
                 />
+
                 <p>{lastNameTitle}</p>
                 <InputField
                     inputType="text"
@@ -116,29 +155,32 @@ function PostEmployeePage () {
                     inputName="lastName"
                     placeholder={lastNameTitle}
                     register={register}
-                    validationRules={{required: "Last Name is required"}}
+                    validationRules={{ required: "Last Name is required" }}
                 />
+
                 <p>{genderTitle}</p>
                 <InputField
                     inputType="select"
                     inputId="gender"
                     inputName="gender"
                     register={register}
-                    validationRules={{required: "Please select your gender"}}
+                    validationRules={{ required: "Please select your gender" }}
                     options={[
-                        {value: "MALE", label: maleTitle},
-                        {value: "FEMALE", label: femaleTitle},
-                        {value: "OTHER", label: otherTitle}
+                        { value: "MALE", label: maleTitle },
+                        { value: "FEMALE", label: femaleTitle },
+                        { value: "OTHER", label: otherTitle }
                     ]}
                 />
+
                 <p>{dateOfBirthTitle}</p>
                 <InputField
                     inputType="date"
                     inputId="dateOfBirth"
                     inputName="dateOfBirth"
                     register={register}
-                    validationRules={{required: "Please select your date of birth"}}
+                    validationRules={{ required: "Please select your date of birth" }}
                 />
+
                 <p>{phoneNumberTitle}</p>
                 <InputField
                     inputType="phone"
@@ -146,62 +188,47 @@ function PostEmployeePage () {
                     inputName="phoneNumber"
                     placeholder={phoneNumberTitle}
                     register={register}
-                    validationRules={{required: "Phone Number is required"}}
+                    validationRules={{ required: "Phone Number is required" }}
                 />
-<p>{roleTitle}</p>
+
+                <p>{roleTitle}</p>
                 <InputField
                     inputType="select"
                     inputId="role"
                     inputName="role"
                     placeholder={roleTitle}
                     register={register}
-                    validationRules={{required: "Please select your employees role"}}
+                    validationRules={{ required: "Please select your employee role" }}
                     options={[
-                        {value: "EMPLOYEE", label: roleEmployee},
-                        {value: "ADMIN", label: roleAdmin},
+                        { value: "EMPLOYEE", label: roleEmployee },
+                        { value: "ADMIN", label: roleAdmin }
                     ]}
                 />
-<p>{qualificationsTitle}</p>
+
+                <p>{qualificationsTitle}</p>
                 <InputField
                     inputType="checkbox-group"
                     inputName="qualifiedOrderIds"
                     register={register}
-                    validationRules={{
-                        required: "Please select at least one qualification"
-                    }}
+                    validationRules={{ required: "Please select at least one qualification" }}
                     options={OrderPlaceholder.map(order => ({
                         value: order.id,
                         label: order.description
                     }))}
                 />
+
                 <p>{availabilityTitle}</p>
                 {["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"].map((day, index) => (
                     <div key={day} className="day-availability">
                         <label>
-                            <input
-                                type="checkbox"
-                                {...register(`availability.${index}.enabled`)}
-                            />
+                            <input type="checkbox" {...register(`availability.${index}.enabled`)} />
                             {day}
                         </label>
-                        <input
-                            type="hidden"
-                            value={day}
-                            {...register(`availability.${index}.dayOfWeek`)}
-                        />
-                        <input
-                            type="time"
-                            {...register(`availability.${index}.startTime`)}
-                        />
-                        <input
-                            type="time"
-                            {...register(`availability.${index}.endTime`)}
-                        />
+                        <input type="hidden" value={day} {...register(`availability.${index}.dayOfWeek`)} />
+                        <input type="time" {...register(`availability.${index}.startTime`)} />
+                        <input type="time" {...register(`availability.${index}.endTime`)} />
                     </div>
                 ))}
-
-
-
 
                 <div className="error-container">
                     {errors.email && <p>{errors.email.message}</p>}
@@ -212,16 +239,12 @@ function PostEmployeePage () {
                     {errors.phoneNumber && <p>{errors.phoneNumber.message}</p>}
                 </div>
 
-                <Button className="btn-primary" type="submit" id="submitBtn"><p>{submitButton}</p></Button>
-
+                <Button className="btn-primary" type="submit" id="submitBtn">
+                    <p>{submitButton}</p>
+                </Button>
             </form>
-
-
         </>
-
     );
-
 }
 
 export default PostEmployeePage;
-

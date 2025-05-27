@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import WorkingScheduler from "../workingScheduler/workingScheduler.jsx";
-import "./EmployeeTileList.css";
+import "./TileList.css";
 
 function EmployeeTileList({ employees }) {
     const [ordersByEmployee, setOrdersByEmployee] = useState({});

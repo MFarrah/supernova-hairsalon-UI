@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "./EmployeeTileList.css"; // Reuse styles
+import "./TileList.css"; // Reuse styles
 
 function OrderTileList() {
     const [orders, setOrders] = useState([]);

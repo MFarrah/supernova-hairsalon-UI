@@ -58,7 +58,7 @@ function DashboardPage() {
                 <div>
                     <ul>
                         <li>Bekijk je rooster</li>
-                        <li>Bekijk klanten</li>
+                        <li>Bekijk je klanten</li>
                         <li>Bekijk je afspraken</li>
                         <li>Plan afspraak</li>
                     </ul>
