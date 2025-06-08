@@ -5,50 +5,53 @@
 }
 
 .employee-tile {
-    flex: 1 1 260px;
-    font-size: 12px;
+    flex: 1 1 280px;
     position: relative;
-    box-sizing: border-box;
-    height: auto;
-    min-height: 200px;
-    overflow: hidden;
     border: 1px solid #ccc;
+    padding: 10px;
+    overflow: hidden;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: box-shadow 0.2s ease;
 }
 
-/* Info default zichtbaar */
+.employee-tile:hover {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
 .tile-front {
-    display: block;
-    padding: 8px;
+    flex: 1;
 }
 
-/* Profielafbeelding default verborgen */
-.tile-back {
+.icon-bar.bottom {
     display: none;
     position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background: #fff;
-    justify-content: center;
-    align-items: center;
+    bottom: 8px;
+    right: 8px;
+    gap: 12px;
 }
 
-.tile-back img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-}
-
-/* Hover-effect: toon afbeelding */
-.employee-tile:hover .tile-front {
-    display: none;
-}
-
-.employee-tile:hover .tile-back {
+.employee-tile:hover .icon-bar.bottom {
     display: flex;
 }
 
-.text-black {
-    color: #000;
+.icon {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    color: #333;
+    transition: color 0.2s;
+}
+
+.icon:hover {
+    color: #007BFF;
 }

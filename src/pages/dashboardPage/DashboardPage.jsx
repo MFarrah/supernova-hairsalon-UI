@@ -1,14 +1,13 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext.jsx";
 import NavBar from "../../components/navBar/NavBar.jsx";
 import TimeBasedGreeting from "../../helpers/TimeBasedGreeting.jsx";
 import "react-datepicker/dist/react-datepicker.css";
-import ProfileImageUploader from "../../components/ProfileImageUploader/ProfileImageUploader.jsx";
 import DataCard from "../../components/DataCard/DataCard.jsx";
+import EmployeeImageManager from "../../components/EmployeeImageManager/EmployeeImageManager.jsx";
 
 function DashboardPage() {
     const { isAuth, user } = useContext(AuthContext);
-    const [selectedEmployeeId, setSelectedEmployeeId] = useState("");
 
     if (!user) return <p>Gebruikersgegevens worden geladen...</p>;
 
@@ -31,22 +30,10 @@ function DashboardPage() {
                         <li>Bekijk en beheer afspraken</li>
                     </ul>
 
-                    {/* Profielfoto-selectie */}
-                    <label>
-                        Selecteer medewerker voor profielfoto:
-                        <select
-                            value={selectedEmployeeId}
-                            onChange={(e) => setSelectedEmployeeId(Number(e.target.value))}
-                        >
-                            <option value="">-- Kies medewerker --</option>
-                            {/* Medewerkers worden opgehaald in DataCard, dus tijdelijk hier geen lijst */}
-                        </select>
-                    </label>
-                    {selectedEmployeeId && <ProfileImageUploader employeeId={selectedEmployeeId} />}
+                    <EmployeeImageManager />
 
-                    {/* Weergave van entiteiten */}
                     <h2>Medewerkers</h2>
-                    <DataCard type="employee" setEmployeeListForSelection={setSelectedEmployeeId} />
+                    <DataCard type="employee" />
 
                     <h2>Klanten</h2>
                     <DataCard type="customer" />

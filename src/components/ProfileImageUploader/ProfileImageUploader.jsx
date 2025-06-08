@@ -49,7 +49,6 @@ function ProfileImageUploader({ employeeId }) {
         <div>
             <input type="file" onChange={handleFileChange} />
             <button onClick={handleUpload}>Upload afbeelding</button>
-            {imageUrl && <img src={imageUrl} alt="Profiel" width={200} />}
         </div>
     );
 }
